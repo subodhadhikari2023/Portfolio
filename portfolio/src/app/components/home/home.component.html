@@ -27,9 +27,18 @@
         </div>
         <!-- Featured Projects -->
         <div class="col-lg shadow border m-1">
-<div class="text-center">
-    <h2>Featured Projects</h2>
-</div>
+            <div class="text-center">
+                <h2>Featured Projects</h2>
+                <h4>{{featuredProjects.name}}</h4>
+            </div>
+            <carousel>
+                <div></div>
+                <slide *ngFor="let picture of featuredProjects.pictures"><img src={{picture}} alt="No Image found" srcset=""
+                        style="display: block;" height="550Px" width="100%"></slide>
+        
+            </carousel>
+            <p class="mt-2">{{featuredProjects.summary}}</p>
+            <p>Visit the portfolio section to learn more!</p>
         </div>
     </div>
 </div>
