@@ -13,6 +13,11 @@ import { ProjectCardComponent } from './components/project-card/project-card.com
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ProjectModalComponent } from './components/project-modal/project-modal.component';
+import {CollapseModule} from 'ngx-bootstrap/collapse';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AccordionModule} from 'ngx-bootstrap/accordion';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +34,12 @@ import { ProjectModalComponent } from './components/project-modal/project-modal.
     BrowserModule,
     AppRoutingModule,
     ModalModule.forRoot(),
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    CollapseModule.forRoot(),
+    FormsModule,
+    BrowserAnimationsModule, 
+    AccordionModule.forRoot()
+
   ],
   providers: [],
   bootstrap: [AppComponent]
