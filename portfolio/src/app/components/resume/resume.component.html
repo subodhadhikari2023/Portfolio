@@ -1,1 +1,176 @@
-<p>resume works!</p>
+<div class="container text-center">
+    <button (click)="downloadResume()" class="btn btn-primary mb-2 shadow border">Download PDF Resume</button>
+
+    <div class="pb-2">
+        <accordion [isAnimated]="true" class="shadow">
+            <accordion-group [(isOpen)]="isWorkExperienceOpen">
+                <button class="btn btn-block justify-content-between d-flex w-100" accordion-heading>
+                    <div style="visibility: hidden;">></div>
+                    <div class="btn-link">Work Experience</div>
+                    <div style="width: 10.95px;">
+                        <div *ngIf="!isWorkExperienceOpen" style="color: white;">></div>
+                        <div *ngIf="isWorkExperienceOpen" style="color: white;">v</div>
+                    </div>
+
+                </button>
+                <div style="text-align: left;">
+                    <h2 class="mb-0">Intern</h2>
+                    <h3 class="text-primary">Government of Sikkim, Department of IT</h3>
+                    <ul>
+                        <li>Developing an internship management system for the Government of Sikkim.</li>
+                        <li>Engineering RESTful APIs using Spring Boot.</li>
+                        <li>Designing and implementing the User Interface using Angular.</li>
+                    </ul>
+                </div>
+            </accordion-group>
+
+            <accordion-group [(isOpen)]="isEducationOpen">
+                <button class="btn btn-block justify-content-between d-flex w-100" accordion-heading>
+                    <div style="visibility: hidden;">></div>
+                    <div class="btn-link">Education</div>
+                    <div style="width: 10.95px;">
+                        <div *ngIf="!isEducationOpen" style="color: white;">></div>
+                        <div *ngIf="isEducationOpen" style="color: white;">v</div>
+                    </div>
+
+                </button>
+                <div style="text-align: left;">
+                    <h2 class="mb-0">Master of Computer Applications</h2>
+                    <h3 class="text-primary">Sikkim Manipal Institute of Technology</h3>
+                    <ul>
+                        <li>2023 – 2025</li>
+                        <li>CGPA: 7.7/10</li>
+                        <li>Relevant Coursework: OOP, DBMS, Discrete Mathematics, Operating Systems, Computer Networks,
+                            .NET, DSA.</li>
+                    </ul>
+                    <hr>
+                    <h2 class="mb-0">Bachelor of Computer Applications</h2>
+                    <h3 class="text-primary">Brainware University, Barasat</h3>
+                    <ul>
+                        <li>2020 – 2023</li>
+                        <li>CGPA: 9.04/10</li>
+                        <li>Relevant Coursework: OOP, DBMS, Software Engineering, DSA, Linux Systems, Internet
+                            Technology.
+                        </li>
+                    </ul>
+                </div>
+            </accordion-group>
+
+            <accordion-group [(isOpen)]="isCertificationOpen">
+                <button class="btn btn-block justify-content-between d-flex w-100" accordion-heading>
+                    <div style="visibility: hidden;">></div>
+                    <div class="btn-link">Certifications</div>
+                    <div style="width: 10.95px;">
+                        <div *ngIf="!isCertificationOpen" style="color: white;">></div>
+                        <div *ngIf="isCertificationOpen" style="color: white;">v</div>
+                    </div>
+
+                </button>
+                <div style="text-align: left;">
+                    <h3>Spring Boot 3, Spring 6 & Hibernate for Beginners</h3>
+                    <ul>
+                        <li>Obtained from: Udemy</li>
+                        <li>Obtained on: 25th of November 2024</li>
+                        <!-- <li>The Complete Java Certification Course - Udemy</li>
+                    <li>Introduction to Cloud Computing - Coursera</li>
+                    <li>Introduction to DevOps - Coursera</li>
+                    <li>Introduction to Agile Development and Scrum - Coursera</li>
+                    <li>Getting Started with Git and GitHub - Coursera</li>
+                    <li>Hands-on Introduction to Linux Commands and Shell Scripting - Coursera</li> -->
+                    </ul>
+                </div>
+            </accordion-group>
+
+            <accordion-group [(isOpen)]="isSkillsOpen">
+                <button class="btn btn-block justify-content-between d-flex w-100" accordion-heading>
+                    <div style="visibility: hidden;">></div>
+                    <div class="btn-link">Skills</div>
+                    <div style="width: 10.95px;">
+                        <div *ngIf="!isSkillsOpen" style="color: white;">></div>
+                        <div *ngIf="isSkillsOpen" style="color: white;">v</div>
+                    </div>
+
+                </button>
+
+                <div class="row" style="text-align: left;">
+                    <div class="col">
+                        <h3>Languages</h3>
+                        <ul>
+                            <li>Java</li>
+                            <li>C</li>
+                            <li>Python</li>
+                            <li>C#</li>
+                            <li>Bash Script</li>
+                            <li>TypeScript.</li>
+                            <!-- <li>Frameworks: Spring Boot, Spring MVC, Spring Security, .NET, Hibernate.</li>
+                        <li>Technologies & Tools: Git, Maven, MySQL, Thymeleaf, Microservices, Scrum Framework.</li> -->
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <h3>Frameworks</h3>
+                        <ul>
+                            <li>Angular</li>
+                            <li>Spring Boot</li>
+                            <li>Hibernate</li>
+                            <li>C#</li>
+                            <li>Bash Script</li>
+                            <li>TypeScript.</li>
+                            <!-- <li>Frameworks: Spring Boot, Spring MVC, Spring Security, .NET, Hibernate.</li>
+                        <li>Technologies & Tools: Git, Maven, MySQL, Thymeleaf, Microservices, Scrum Framework.</li> -->
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <h3>Soft Skills</h3>
+                        <ul>
+                            <li>Problem Solving and Analytical Thinking.</li>
+                            <li>Teamwork and Collaboration.</li>
+                            <li>Adaptability and Continuous Learning.</li>
+                            <li>Effective Communication.</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+
+
+            </accordion-group>
+
+            <accordion-group [(isOpen)]="isProjectsOpen">
+                <button class="btn btn-block justify-content-between d-flex w-100" accordion-heading>
+                    <div style="visibility: hidden;">></div>
+                    <div class="btn-link">Projects</div>
+                    <div style="width: 10.95px;">
+                        <div *ngIf="!isProjectsOpen" style="color: white;">></div>
+                        <div *ngIf="isProjectsOpen" style="color: white;">v</div>
+                    </div>
+
+                </button>
+                <div style="text-align: left;">
+                    <h3 class="text-primary">CRUD Application</h3>
+                    <ul>
+                        <li>Developed a web-based CRUD application using Spring Boot, Spring MVC, Thymeleaf, Hibernate,
+                            and
+                            MySQL.</li>
+                        <li>Implemented real-time user management with create, retrieve, update, and delete
+                            functionalities.
+                        </li>
+                    </ul>
+                    <hr>
+                    <h3 class="text-primary">Patient Portal</h3>
+                    <ul>
+                        <li>Designed a patient portal using PHP, MySQL, HTML, CSS, and JavaScript.</li>
+                        <li>Integrated doctor appointment scheduling and real-time modification.</li>
+                        <li>Enabled real-time viewing of all booked appointments.</li>
+                    </ul>
+                    <hr>
+                    <h3 class="text-primary">Campus Connect</h3>
+                    <ul>
+                        <li>Developed a role-based access control platform for Admins, HODs, Teachers, and Students.
+                        </li>
+                        <li>Integrated a resource library for academic materials.</li>
+                        <li>Built using Java Spring Boot, Hibernate JPA, Thymeleaf, and MySQL.</li>
+                    </ul>
+                </div>
+            </accordion-group>
+        </accordion>
+    </div>
+</div>
