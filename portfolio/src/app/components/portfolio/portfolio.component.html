@@ -1,18 +1,20 @@
 <div class="container">
 
-    <div class="mb-2">
+
+    <div class="mb-2 ">
 
         <div>
             <button class="btn btn-outline-primary mb-2 me-2" (click)="isCollapsed=!isCollapsed">Filter</button>
-            <button class="btn btn-outline-secondary mb-2 me-2" (click)="resetFilters()" [hidden]="!isfiltered">Reset</button>
+            <button class="btn btn-outline-secondary mb-2 me-2" (click)="resetFilters()"
+                [hidden]="!isfiltered">Reset</button>
         </div>
 
         <div [collapse]="isCollapsed" [isAnimated]="true">
-            <div class="border mb-2 shadow-sm" style="width: 250px;">
+            <div class="border mb-2 shadow-sm " >
                 <form>
-                    <div class="row mx-0">
-                        <div class="col">
-                            <small><b>Languages:</b></small>
+                    <div class="row flex-row mx-0">
+                        <div class="col-4">
+                            <small class="d-flex justify-content-between"><b>Languages:</b></small>
                             <div class="form-group">
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input position-static me-2"
@@ -20,16 +22,83 @@
                                     <label class="form-check-label small">TypeScript</label>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col">
-                            <small><b>Frameworks:</b></small>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input position-static me-2"
+                                        [(ngModel)]="java" (change)="filter()" name="Java">
+                                    <label class="form-check-label small">Java</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input position-static me-2"
+                                        [(ngModel)]="php" (change)="filter()" name="PHP">
+                                    <label class="form-check-label small">PHP</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input position-static me-2"
+                                        [(ngModel)]="javascript" (change)="filter()" name="JavaScript">
+                                    <label class="form-check-label small">JavaScript</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <small class="d-flex justify-content-between"><b>Frameworks:</b></small>
 
                             <div class="form-group">
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input position-static me-2"
                                         [(ngModel)]="angular" (change)="filter()" name="Angular">
                                     <label class="form-check-label small">Angular</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input position-static me-2"
+                                        [(ngModel)]="spring_boot" (change)="filter()" name="Spring Boot">
+                                    <label class="form-check-label small">Spring Boot</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input position-static me-2"
+                                        [(ngModel)]="hibernate" (change)="filter()" name="Hibernate">
+                                    <label class="form-check-label small">Hibernate</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input position-static me-2"
+                                        [(ngModel)]="thymeleaf" (change)="filter()" name="Thymeleaf">
+                                    <label class="form-check-label small">Thymeleaf</label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input position-static me-2"
+                                        [(ngModel)]="spring_security" (change)="filter()" name="Spring Security">
+                                    <label class="form-check-label small">Spring Security</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input position-static me-2"
+                                        [(ngModel)]="spring_mvc" (change)="filter()" name="Spring MVC">
+                                    <label class="form-check-label small">Spring MVC</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <small class="d-flex justify-content-between"><b>DBMS:</b></small>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input position-static me-2"
+                                        [(ngModel)]="mysql" (change)="filter()" name="MySQL">
+                                    <label class="form-check-label small">MySQL</label>
                                 </div>
                             </div>
                         </div>
@@ -39,11 +108,22 @@
 
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-4 col-md-6 mb-4" style="max-width: 380px; min-width: 380px;"
+    <!-- <div class="row-wrapper">
+        <div class="row">
+            <div class="col" *ngFor="let project of projects">
+                <app-project-card [project]="project"></app-project-card>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="row ">
+        <div class="col-lg-4 col-md-6 mb-4 shadow-sm" style="max-width: 380px; min-width: 380px;"
             *ngFor="let project of projects">
             <app-project-card [project]="project"></app-project-card>
         </div>
+        <!-- <hr style="border: 3px solid rgb(0, 39, 0)" class="shadow"> -->
+        <!-- <hr> -->
+
 
     </div>
 
