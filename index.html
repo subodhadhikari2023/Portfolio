@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subodh Adhikari - Full Stack Web Developer</title>
+    <link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+    <div id="top"></div>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="#top" class="brand-name">Subodh Adhikari</a>
+        </div>
+
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+            <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+            <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
+            <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="nav-cta">
+            <button class="btn-nav">Hire Me!</button>
+            <a href="Assets/resume/Subodh_Adhikari_Resume.pdf" class="btn-nav" download>Download Resume</a>
+        </div>
+
+        <!-- Hamburger Menu -->
+        <button class="hamburger" id="hamburger" type="button" aria-label="Toggle navigation" aria-controls="mobileMenu"
+            aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Mobile Menu (separate class to avoid conflicts) -->
+        <ul class="mobile-menu" id="mobileMenu" role="menu" aria-hidden="true">
+            <li class="nav-item"><a href="#about" class="nav-link" role="menuitem">About</a></li>
+            <li class="nav-item"><a href="#services" class="nav-link" role="menuitem">Services</a></li>
+            <li class="nav-item"><a href="#skills" class="nav-link" role="menuitem">Skills</a></li>
+            <li class="nav-item"><a href="#projects" class="nav-link" role="menuitem">Projects</a></li>
+            <li class="nav-item"><a href="#experience" class="nav-link" role="menuitem">Experience</a></li>
+            <li class="nav-item"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
+            <li class="nav-item"><a href="Assets/resume/Subodh_Adhikari_Resume.pdf" class="nav-link" role="menuitem" download>Resume</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-badge">
+                ✨ Open to Backend Development Opportunities
+            </div>
+
+            <h1 class="heading-primary hero-name">Subodh Adhikari</h1>
+
+            <h2 class="heading-secondary hero-title">Full Stack Web Developer</h2>
+
+            <p class="text-body-lg hero-description">I build reliable backend systems and REST APIs using Java and
+                Spring Boot, with a focus on clean architecture, security, and real-world usability.</p>
+
+            <div class="hero-cta">
+                <a href="#contact" class="btn-primary">
+                    Hire Me!
+                </a>
+                <a href="#projects" class="btn-secondary">
+                    View Projects
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-image-container">
+            <div class="hero-accent hero-accent-1"></div>
+            <div class="hero-accent hero-accent-2"></div>
+            <div class="hero-image-wrapper">
+                <img src="Assets/hero-image.png" alt="Subodh Adhikari - Full Stack Web Developer" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- White Separator -->
+    <div class="section-separator"></div>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+            </div>
+
+            <div class="about-content">
+                <p class="about-paragraph">
+                    I am a backend-focused full stack web developer based in Kalimpong, West Bengal, India with strong
+                    experience in building Java-based web applications and RESTful APIs using Spring Boot, Spring
+                    Security, Hibernate/JPA, and relational databases.
+                </p>
+
+                <p class="about-paragraph">
+                    My work includes academic and government-aligned projects involving role-based access control,
+                    secure authentication, database-driven systems, and workflow automation. I focus on writing
+                    maintainable code, designing clear APIs, and understanding system behavior beyond surface-level
+                    implementation.
+                </p>
+
+                <p class="about-paragraph">
+                    While Spring Boot remains my strongest skill, I am actively expanding toward modern frontend
+                    development (React) and Python-based automation, aligning my skill set with current freelance and
+                    industry requirements.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <div class="section-separator"></div>
+
+    <section class="services-section" id="services">
+        <div class="section-container">
+            <div class="section-header section-header-dark">
+                <h2 class="section-title section-title-dark">Services</h2>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="ti ti-api"></i>
+                    </div>
+                    <h3 class="service-title">Backend & REST API Development</h3>
+                    <p class="service-description">Designing and developing secure, scalable backend systems using
+                        Spring Boot, Spring Security, and Hibernate/JPA.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="ti ti-database"></i>
+                    </div>
+                    <h3 class="service-title">API Integration & Database Design</h3>
+                    <p class="service-description">Building and integrating APIs with MySQL, PostgreSQL, and designing
+                        schemas that support clean business logic.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="ti ti-code"></i>
+                    </div>
+                    <h3 class="service-title">Java-Based Web Application Support</h3>
+                    <p class="service-description">Enhancing, refactoring, or extending existing Java/Spring
+                        applications with a focus on stability and maintainability.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="ti ti-automation"></i>
+                    </div>
+                    <h3 class="service-title">System Automation & Linux Tasks</h3>
+                    <p class="service-description">Automating workflows using Bash and Python scripts, cron jobs, and
+                        Linux-based tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <div class="section-separator"></div>
+
+    <section class="skills-section" id="skills">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Skills</h2>
+            </div>
+
+            <div class="skills-category">
+                <h3 class="skills-category-title">Programming Languages</h3>
+                <div class="skills-tech-grid">
+                    <div class="tech-item">
+                        <img src="Assets/icons/javascript.svg" alt="JavaScript" class="tech-icon">
+                        <span class="tech-name">JavaScript</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="Assets/icons/java.svg" alt="Java" class="tech-icon">
+                        <span class="tech-name">Java</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="Assets/icons/python.svg" alt="Python" class="tech-icon">
+                        <span class="tech-name">Python</span>
+                    </div>
+                    <div class="tech-item tech-item-text">
+                        <span class="tech-name">TypeScript</span>
+                    </div>
+                    <div class="tech-item tech-item-text">
+                        <span class="tech-name">SQL</span>
+                    </div>
+                    <div class="tech-item tech-item-text">
+                        <span class="tech-name">Bash</span>
+                    </div>
+                    <div class="tech-item tech-item-text">
+                        <span class="tech-name">C</span>
+                    </div>
+                    <div class="tech-item tech-item-text">
+                        <span class="tech-name">PHP</span>
+                    </div>
+                    <div class="cert-actions">
+                        <a href="https://onedrive.live.com/?id=REPLACE_WITH_YOUR_SHARED_FOLDER" class="btn-cert" target="_blank" rel="noopener noreferrer">View Other Certifications</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <h3 class="skills-category-title">Backend & Frameworks</h3>
+                <div class="skills-tech-grid">
+                    <div class="tech-item">
+                        <img src="Assets/icons/spring.svg" alt="Spring Boot" class="tech-icon">
+                        <span class="tech-name">Spring Boot</span>
+                    </div>
+                    <div class="tech-item tech-item-text">
+                        <span class="tech-name">Spring MVC</span>
+                    </div>
+                    <div class="tech-item tech-item-text">
+                        <span class="tech-name">Spring Security</span>
+                    </div>
+                    <div class="tech-item tech-item-text">
+                        <span class="tech-name">Hibernate/JPA</span>
+                    </div>
+                    <div class="tech-item tech-item-text">
+                        <span class="tech-name">REST API</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <h3 class="skills-category-title">Databases & Tools</h3>
+                <div class="skills-tech-grid">
+                    <div class="tech-item">
+                        <img src="Assets/icons/mysql.svg" alt="MySQL" class="tech-icon">
+                        <span class="tech-name">MySQL</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="Assets/icons/git.svg" alt="Git" class="tech-icon">
+                        <span class="tech-name">Git</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="Assets/icons/github.svg" alt="GitHub" class="tech-icon">
+                        <span class="tech-name">GitHub</span>
+                    </div>
+                    <div class="tech-item tech-item-text">
+                        <span class="tech-name">PostgreSQL</span>
+                    </div>
+                    <div class="tech-item tech-item-text">
+                        <span class="tech-name">Maven</span>
+                    </div>
+                    <div class="tech-item tech-item-text">
+                        <span class="tech-name">Linux</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <div class="section-separator"></div>
+
+    <section class="projects-section" id="projects">
+        <div class="section-container">
+            <div class="section-header section-header-dark">
+                <h2 class="section-title section-title-dark">Projects</h2>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Campus Connect</h3>
+                        <span class="project-tag">Academic Platform</span>
+                    </div>
+                    <p class="project-description">A role-based academic platform for Admins, HODs, Teachers, and
+                        Students, providing centralized access control and academic resource management.</p>
+
+                    <div class="project-features">
+                        <h4 class="project-features-title">Key Features:</h4>
+                        <ul class="project-features-list">
+                            <li>Role-based authentication and authorization</li>
+                            <li>Academic resource library</li>
+                            <li>Secure backend design</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-tech">
+                        <span class="tech-badge">Java</span>
+                        <span class="tech-badge">Spring Boot</span>
+                        <span class="tech-badge">Hibernate JPA</span>
+                        <span class="tech-badge">Thymeleaf</span>
+                        <span class="tech-badge">MySQL</span>
+                    </div>
+                    <div class="project-cta">
+                        <a href="https://github.com/subodhadhikari2023/CampusConnect" class="btn-github" target="_blank" rel="noopener noreferrer">View Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Internship Management Portal</h3>
+                        <span class="project-tag">Government Project</span>
+                    </div>
+                    <p class="project-description">A web-based platform designed to digitize the internship application
+                        and management process under the Department of Information Technology, Government of Sikkim.</p>
+
+                    <div class="project-features">
+                        <h4 class="project-features-title">Key Features:</h4>
+                        <ul class="project-features-list">
+                            <li>Online internship applications and approvals</li>
+                            <li>Student status tracking</li>
+                            <li>Centralized project file storage</li>
+                            <li>Email notifications</li>
+                            <li>Certificate issuance</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-tech">
+                        <span class="tech-badge">Angular 14</span>
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">Java</span>
+                        <span class="tech-badge">Spring Boot</span>
+                        <span class="tech-badge">Spring Security</span>
+                        <span class="tech-badge">Hibernate</span>
+                        <span class="tech-badge">MySQL</span>
+                    </div>
+                    <div class="project-cta">
+                        <a href="https://github.com/subodhadhikari2023/Internship-Portal" class="btn-github" target="_blank" rel="noopener noreferrer">View Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education Section -->
+    <div class="section-separator"></div>
+
+    <section class="experience-section" id="experience">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Experience & Education</h2>
+            </div>
+
+            <div class="timeline-container">
+                <!-- Experience -->
+                <div class="timeline-section">
+                    <h3 class="timeline-section-title">
+                        <i class="ti ti-briefcase"></i>
+                        Work Experience
+                    </h3>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-title">Lecturer</h4>
+                            <p class="timeline-subtitle">Department of IT, ICFAI University, Sikkim</p>
+                            <ul class="timeline-list">
+                                <li>Teaching programming, DBMS, and system-level concepts</li>
+                                <li>Reviewing code and reinforcing structured problem-solving</li>
+                                <li>Teaching Data Structures and Algorithms</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-title">TGT Computer</h4>
+                            <ul class="timeline-list">
+                                <li>Delivered instruction on computer fundamentals and programming logic</li>
+                                <li>Guided hands-on lab sessions involving coding and debugging</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="timeline-section">
+                    <h3 class="timeline-section-title">
+                        <i class="ti ti-school"></i>
+                        Education
+                    </h3>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-title">Master of Computer Applications (MCA)</h4>
+                            <p class="timeline-subtitle">Sikkim Manipal Institute of Technology</p>
+                            <p class="timeline-meta">2023 – 2025 | CGPA: 7.7 / 10</p>
+                            <p class="timeline-coursework"><strong>Relevant Coursework:</strong> OOP, DBMS, Discrete
+                                Mathematics, Operating Systems, Computer Networks, .NET, DSA</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-title">Bachelor of Computer Applications (BCA)</h4>
+                            <p class="timeline-subtitle">Brainware University, Barasat</p>
+                            <p class="timeline-meta">2020 – 2023 | CGPA: 9.04 / 10</p>
+                            <p class="timeline-coursework"><strong>Relevant Coursework:</strong> OOP, DBMS, Software
+                                Engineering, DSA, Linux Systems, Internet Technology</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="timeline-section">
+                    <h3 class="timeline-section-title">
+                        <i class="ti ti-certificate"></i>
+                        Certifications
+                    </h3>
+
+                    <div class="certifications-grid">
+                        <div class="cert-item">
+                            <i class="ti ti-award"></i>
+                            <div class="cert-content">
+                                <h5 class="cert-title">Spring Boot 3, Spring 6 & Hibernate for Beginners</h5>
+                                <p class="cert-meta">Udemy • Nov 2024</p>
+                            </div>
+                        </div>
+
+                        <div class="cert-item">
+                            <i class="ti ti-award"></i>
+                            <div class="cert-content">
+                                <h5 class="cert-title">The Complete Java Certification Course</h5>
+                                <p class="cert-meta">Udemy • Feb 2023</p>
+                            </div>
+                        </div>
+
+                        <div class="cert-item">
+                            <i class="ti ti-award"></i>
+                            <div class="cert-content">
+                                <h5 class="cert-title">Introduction to Cloud Computing</h5>
+                                <p class="cert-meta">Coursera • Jun 2024</p>
+                            </div>
+                        </div>
+
+                        <div class="cert-item">
+                            <i class="ti ti-award"></i>
+                            <div class="cert-content">
+                                <h5 class="cert-title">Getting Started with Git and GitHub</h5>
+                                <p class="cert-meta">Coursera • Jun 2024</p>
+                            </div>
+                        </div>
+
+                        <div class="cert-item">
+                            <i class="ti ti-award"></i>
+                            <div class="cert-content">
+                                <h5 class="cert-title">Linux Commands and Shell Scripting</h5>
+                                <p class="cert-meta">Coursera • Jun 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <div class="section-separator"></div>
+
+    <section class="contact-section" id="contact">
+        <div class="section-container">
+            <div class="section-header section-header-dark">
+                <h2 class="section-title section-title-dark">Get In Touch</h2>
+                <p class="section-subtitle">Open to backend-focused freelance work, API development, and technical
+                    collaboration.</p>
+            </div>
+
+            <div class="contact-grid">
+                <a href="mailto:subodhadhikari2023@outlook.com" class="contact-card">
+                    <div class="contact-icon">
+                        <i class="ti ti-mail"></i>
+                    </div>
+                    <h3 class="contact-title">Email</h3>
+                    <p class="contact-info">subodhadhikari2023@outlook.com</p>
+                </a>
+
+                <a href="https://github.com/subodhadhikari2023" target="_blank" rel="noopener noreferrer"
+                    class="contact-card">
+                    <div class="contact-icon">
+                        <img src="Assets/icons/github.svg" alt="GitHub" class="contact-icon-img">
+                    </div>
+                    <h3 class="contact-title">GitHub</h3>
+                    <p class="contact-info">subodhadhikari2023</p>
+                </a>
+
+                <a href="https://www.linkedin.com/in/subodh-adhikari-4b811a296/" target="_blank" rel="noopener noreferrer"
+                    class="contact-card">
+                    <div class="contact-icon">
+                        <img src="Assets/icons/linkedin.svg" alt="LinkedIn" class="contact-icon-img">
+                    </div>
+                    <h3 class="contact-title">LinkedIn</h3>
+                    <p class="contact-info">Subodh Adhikari</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">© 2025 Subodh Adhikari. Built with passion for backend development.</p>
+            <div class="footer-links">
+                <a href="#about" class="footer-link">About</a>
+                <a href="#services" class="footer-link">Services</a>
+                <a href="#projects" class="footer-link">Projects</a>
+                <a href="#contact" class="footer-link">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="Scripts/main.js"></script>
+</body>
+
+</html>
