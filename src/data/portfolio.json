@@ -12,10 +12,22 @@
   },
   "about": "I deliver complete, production-ready web applications — from scoping and architecture through to containerized deployment on live servers. You get one developer handling the full stack: secured backend APIs, Angular or React frontends, Docker packaging, and CI/CD pipelines. My delivered work includes a system for the Department of IT, Government of Sikkim, and CampusConnect — a live multi-role academic platform with 194 automated tests. I write maintainable code, communicate clearly at every stage, and don't hand off half-finished work.",
   "stats": [
-    { "label": "Projects Shipped", "value": "2+" },
-    { "label": "Automated Tests", "value": "194" },
-    { "label": "Government Client", "value": "1" },
-    { "label": "Avg. Delivery", "value": "2–4 Wks" }
+    {
+      "label": "Projects Shipped",
+      "value": "2+"
+    },
+    {
+      "label": "Automated Tests",
+      "value": "194"
+    },
+    {
+      "label": "Government Client",
+      "value": "1"
+    },
+    {
+      "label": "Avg. Delivery",
+      "value": "2–4 Wks"
+    }
   ],
   "featuredProjects": [
     {
@@ -28,7 +40,15 @@
       "liveUrl": null,
       "liveLabel": "Production system — public demo not available",
       "collaborator": null,
-      "tags": ["Angular 14", "TypeScript", "Spring Boot", "Spring Security", "JWT", "Hibernate", "MySQL"]
+      "tags": [
+        "Angular 14",
+        "TypeScript",
+        "Spring Boot",
+        "Spring Security",
+        "JWT",
+        "Hibernate",
+        "MySQL"
+      ]
     },
     {
       "repo": "CampusConnect",
@@ -45,16 +65,75 @@
         "/assets/screenshots/cc-login.png",
         "/assets/screenshots/cc-dashboard.png"
       ],
-      "tags": ["Spring Boot", "Thymeleaf", "Hibernate", "MySQL", "Docker", "GitHub Actions", "JUnit 5"]
+      "tags": [
+        "Spring Boot",
+        "Thymeleaf",
+        "Hibernate",
+        "MySQL",
+        "Docker",
+        "GitHub Actions",
+        "JUnit 5"
+      ]
+    },
+    {
+      "repo": "BCA-MAJOR-PROJECT",
+      "featured": true,
+      "order": 3,
+      "customTitle": "BCA MAJOR PROJECT",
+      "customDescription": "[TODO: describe BCA-MAJOR-PROJECT]",
+      "highlight": "[TODO: add key stat or achievement]",
+      "liveUrl": null,
+      "liveLabel": null,
+      "collaborator": null,
+      "tags": [],
+      "_draft": true
     }
   ],
   "skills": {
-    "Web Applications": ["Angular", "React", "Spring Boot", "Thymeleaf", "HTML/CSS", "TypeScript"],
-    "APIs & Backend": ["Spring MVC", "Spring Security", "Hibernate/JPA", "REST API", "JWT", "Flask"],
-    "Deployment & DevOps": ["Docker", "Docker Compose", "GitHub Actions", "GHCR", "Railway", "Linux"],
-    "Data & Storage": ["MySQL", "PostgreSQL", "H2", "Flyway"],
-    "Languages": ["Java", "TypeScript", "JavaScript", "Python", "SQL", "Bash"],
-    "Tools": ["Git", "Maven", "IntelliJ IDEA", "VS Code"]
+    "Web Applications": [
+      "Angular",
+      "React",
+      "Spring Boot",
+      "Thymeleaf",
+      "HTML/CSS",
+      "TypeScript"
+    ],
+    "APIs & Backend": [
+      "Spring MVC",
+      "Spring Security",
+      "Hibernate/JPA",
+      "REST API",
+      "JWT",
+      "Flask"
+    ],
+    "Deployment & DevOps": [
+      "Docker",
+      "Docker Compose",
+      "GitHub Actions",
+      "GHCR",
+      "Railway",
+      "Linux"
+    ],
+    "Data & Storage": [
+      "MySQL",
+      "PostgreSQL",
+      "H2",
+      "Flyway"
+    ],
+    "Languages": [
+      "Java",
+      "TypeScript",
+      "JavaScript",
+      "Python",
+      "SQL",
+      "Bash"
+    ],
+    "Tools": [
+      "Git",
+      "Maven",
+      "IntelliJ IDEA",
+      "VS Code"
+    ]
   },
   "experience": [
     {
@@ -94,15 +173,65 @@
     }
   ],
   "certifications": [
-    { "name": "Spring Boot 3, Spring 6 & Hibernate for Beginners", "issuer": "Udemy", "date": "Nov 2024", "screenshot": "/assets/certifications/spring-boot.png" },
-    { "name": "The Complete Java Certification Course", "issuer": "Udemy", "date": "Feb 2023", "screenshot": "/assets/certifications/java.png" },
-    { "name": "Introduction to Containers w/ Docker, Kubernetes & OpenShift", "issuer": "IBM / Coursera", "date": "Jul 2024", "screenshot": "/assets/certifications/docker.png" },
-    { "name": "Developing AI Applications with Python and Flask", "issuer": "IBM / Coursera", "date": "Jul 2024", "screenshot": "/assets/certifications/flask.png" },
-    { "name": "Python for Data Science, AI & Development", "issuer": "IBM / Coursera", "date": "Jun 2024", "screenshot": "/assets/certifications/python.png" },
-    { "name": "Introduction to Cloud Computing", "issuer": "IBM / Coursera", "date": "Jun 2024", "screenshot": "/assets/certifications/cloud.png" },
-    { "name": "Introduction to DevOps", "issuer": "IBM / Coursera", "date": "Jun 2024", "screenshot": "/assets/certifications/devops.png" },
-    { "name": "Hands-on Introduction to Linux Commands and Shell Scripting", "issuer": "IBM / Coursera", "date": "Jun 2024", "screenshot": "/assets/certifications/linux.png" },
-    { "name": "Getting Started with Git and GitHub", "issuer": "IBM / Coursera", "date": "Jun 2024", "screenshot": "/assets/certifications/git-github.png" },
-    { "name": "Introduction to Agile Development and Scrum", "issuer": "IBM / Coursera", "date": "Jun 2024", "screenshot": "/assets/certifications/agile.png" }
+    {
+      "name": "Spring Boot 3, Spring 6 & Hibernate for Beginners",
+      "issuer": "Udemy",
+      "date": "Nov 2024",
+      "screenshot": "/assets/certifications/spring-boot.png"
+    },
+    {
+      "name": "The Complete Java Certification Course",
+      "issuer": "Udemy",
+      "date": "Feb 2023",
+      "screenshot": "/assets/certifications/java.png"
+    },
+    {
+      "name": "Introduction to Containers w/ Docker, Kubernetes & OpenShift",
+      "issuer": "IBM / Coursera",
+      "date": "Jul 2024",
+      "screenshot": "/assets/certifications/docker.png"
+    },
+    {
+      "name": "Developing AI Applications with Python and Flask",
+      "issuer": "IBM / Coursera",
+      "date": "Jul 2024",
+      "screenshot": "/assets/certifications/flask.png"
+    },
+    {
+      "name": "Python for Data Science, AI & Development",
+      "issuer": "IBM / Coursera",
+      "date": "Jun 2024",
+      "screenshot": "/assets/certifications/python.png"
+    },
+    {
+      "name": "Introduction to Cloud Computing",
+      "issuer": "IBM / Coursera",
+      "date": "Jun 2024",
+      "screenshot": "/assets/certifications/cloud.png"
+    },
+    {
+      "name": "Introduction to DevOps",
+      "issuer": "IBM / Coursera",
+      "date": "Jun 2024",
+      "screenshot": "/assets/certifications/devops.png"
+    },
+    {
+      "name": "Hands-on Introduction to Linux Commands and Shell Scripting",
+      "issuer": "IBM / Coursera",
+      "date": "Jun 2024",
+      "screenshot": "/assets/certifications/linux.png"
+    },
+    {
+      "name": "Getting Started with Git and GitHub",
+      "issuer": "IBM / Coursera",
+      "date": "Jun 2024",
+      "screenshot": "/assets/certifications/git-github.png"
+    },
+    {
+      "name": "Introduction to Agile Development and Scrum",
+      "issuer": "IBM / Coursera",
+      "date": "Jun 2024",
+      "screenshot": "/assets/certifications/agile.png"
+    }
   ]
 }
