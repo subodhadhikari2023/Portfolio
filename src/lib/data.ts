@@ -1,5 +1,5 @@
 import portfolioJson from '@/data/portfolio.json'
-import { getRepoData, getRepoLanguages } from './github'
+import { getRepoData, getRepoLanguages, getProfileSkills } from './github'
 import type { PortfolioData, FeaturedProject } from './types'
 
 const raw = portfolioJson as PortfolioData & {
@@ -7,32 +7,36 @@ const raw = portfolioJson as PortfolioData & {
 }
 
 export async function getPortfolioData(): Promise<PortfolioData> {
-  const projectsWithGitHub: FeaturedProject[] = await Promise.all(
-    raw.featuredProjects
-      .filter(p => !p._draft)
-      .map(async (project) => {
-        const gh = await getRepoData(project.repo)
-        return {
-          ...project,
-          githubUrl: gh?.html_url ?? `https://github.com/subodhadhikari2023/${project.repo}`,
-          stars: gh?.stargazers_count ?? 0,
-          updatedAt: gh?.updated_at ?? null,
-          language: gh?.language ?? null,
-        }
-      })
-  )
+  const [projectsWithGitHub, profileSkills] = await Promise.all([
+    Promise.all(
+      raw.featuredProjects
+        .filter(p => !p._draft)
+        .map(async (project) => {
+          const gh = await getRepoData(project.repo)
+          return {
+            ...project,
+            githubUrl: gh?.html_url ?? `https://github.com/subodhadhikari2023/${project.repo}`,
+            stars: gh?.stargazers_count ?? 0,
+            updatedAt: gh?.updated_at ?? null,
+            language: gh?.language ?? null,
+          } as FeaturedProject
+        })
+    ),
+    getProfileSkills(),
+  ])
 
-  // Auto-detect languages from all featured repos and merge into the Languages skill list
-  const repoLangs = await Promise.all(
-    projectsWithGitHub.map(p => getRepoLanguages(p.repo))
-  )
+  // Skills: prefer the profile README block; fall back to portfolio.json
+  const baseSkills = profileSkills ?? raw.skills
+
+  // Auto-detect languages from repo API and merge into the Languages category
+  const repoLangs = await Promise.all(projectsWithGitHub.map(p => getRepoLanguages(p.repo)))
   const detected = Array.from(new Set(repoLangs.flat()))
-  const existing = raw.skills['Languages'] ?? []
-  const mergedLanguages = Array.from(new Set([...existing, ...detected]))
+  const existingLangs = baseSkills['Languages'] ?? []
+  const mergedLanguages = Array.from(new Set([...existingLangs, ...detected]))
 
   return {
     ...raw,
     featuredProjects: projectsWithGitHub.sort((a, b) => a.order - b.order),
-    skills: { ...raw.skills, Languages: mergedLanguages },
+    skills: { ...baseSkills, Languages: mergedLanguages },
   }
 }

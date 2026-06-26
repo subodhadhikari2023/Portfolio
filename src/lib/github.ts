@@ -15,6 +15,29 @@ export interface GitHubRepo {
 // Languages too small to count as meaningful skills
 const SKIP_LANGS = new Set(['HTML', 'CSS', 'SCSS', 'Dockerfile', 'Shell', 'Batchfile', 'Makefile', 'PLpgSQL'])
 
+export async function getProfileSkills(): Promise<Record<string, string[]> | null> {
+  try {
+    const res = await fetch(
+      `${GITHUB_API}/repos/${GITHUB_USERNAME}/${GITHUB_USERNAME}/contents/README.md`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.GITHUB_TOKEN ?? ''}`,
+          Accept: 'application/vnd.github.v3+json',
+        },
+        next: { revalidate: 3600 },
+      }
+    )
+    if (!res.ok) return null
+    const data: { content: string } = await res.json()
+    const markdown = Buffer.from(data.content, 'base64').toString('utf-8')
+    const match = markdown.match(/<!--\s*PORTFOLIO_SKILLS\s*([\s\S]*?)\s*-->/)
+    if (!match) return null
+    return JSON.parse(match[1].trim())
+  } catch {
+    return null
+  }
+}
+
 export async function getRepoLanguages(repoName: string): Promise<string[]> {
   try {
     const res = await fetch(
