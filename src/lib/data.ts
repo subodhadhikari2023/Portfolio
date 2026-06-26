@@ -8,16 +8,18 @@ const raw = portfolioJson as PortfolioData & {
 
 export async function getPortfolioData(): Promise<PortfolioData> {
   const projectsWithGitHub: FeaturedProject[] = await Promise.all(
-    raw.featuredProjects.map(async (project) => {
-      const gh = await getRepoData(project.repo)
-      return {
-        ...project,
-        githubUrl: gh?.html_url ?? `https://github.com/subodhadhikari2023/${project.repo}`,
-        stars: gh?.stargazers_count ?? 0,
-        updatedAt: gh?.updated_at ?? null,
-        language: gh?.language ?? null,
-      }
-    })
+    raw.featuredProjects
+      .filter(p => !p._draft)          // hide drafts — only show reviewed entries
+      .map(async (project) => {
+        const gh = await getRepoData(project.repo)
+        return {
+          ...project,
+          githubUrl: gh?.html_url ?? `https://github.com/subodhadhikari2023/${project.repo}`,
+          stars: gh?.stargazers_count ?? 0,
+          updatedAt: gh?.updated_at ?? null,
+          language: gh?.language ?? null,
+        }
+      })
   )
 
   return {

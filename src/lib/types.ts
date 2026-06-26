@@ -27,6 +27,7 @@ export interface FeaturedProject {
   collaborator: string | null
   tags: string[]
   screenshots?: string[]
+  _draft?: boolean
   githubUrl?: string
   stars?: number
   updatedAt?: string | null
