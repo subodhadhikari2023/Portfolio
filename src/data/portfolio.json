@@ -79,14 +79,13 @@
       "repo": "BCA-MAJOR-PROJECT",
       "featured": true,
       "order": 3,
-      "customTitle": "BCA MAJOR PROJECT",
-      "customDescription": "[TODO: describe BCA-MAJOR-PROJECT]",
+      "customTitle": "BCA-Major-Project",
+      "customDescription": "This is a patient portal made for my Major Project of BCA",
       "highlight": "[TODO: add key stat or achievement]",
       "liveUrl": null,
       "liveLabel": null,
       "collaborator": null,
-      "tags": [],
-      "_draft": true
+      "tags": []
     }
   ],
   "skills": {
