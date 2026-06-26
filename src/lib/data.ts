@@ -1,5 +1,5 @@
 import portfolioJson from '@/data/portfolio.json'
-import { getRepoData } from './github'
+import { getRepoData, getRepoLanguages } from './github'
 import type { PortfolioData, FeaturedProject } from './types'
 
 const raw = portfolioJson as PortfolioData & {
@@ -9,7 +9,7 @@ const raw = portfolioJson as PortfolioData & {
 export async function getPortfolioData(): Promise<PortfolioData> {
   const projectsWithGitHub: FeaturedProject[] = await Promise.all(
     raw.featuredProjects
-      .filter(p => !p._draft)          // hide drafts — only show reviewed entries
+      .filter(p => !p._draft)
       .map(async (project) => {
         const gh = await getRepoData(project.repo)
         return {
@@ -22,8 +22,17 @@ export async function getPortfolioData(): Promise<PortfolioData> {
       })
   )
 
+  // Auto-detect languages from all featured repos and merge into the Languages skill list
+  const repoLangs = await Promise.all(
+    projectsWithGitHub.map(p => getRepoLanguages(p.repo))
+  )
+  const detected = Array.from(new Set(repoLangs.flat()))
+  const existing = raw.skills['Languages'] ?? []
+  const mergedLanguages = Array.from(new Set([...existing, ...detected]))
+
   return {
     ...raw,
     featuredProjects: projectsWithGitHub.sort((a, b) => a.order - b.order),
+    skills: { ...raw.skills, Languages: mergedLanguages },
   }
 }
