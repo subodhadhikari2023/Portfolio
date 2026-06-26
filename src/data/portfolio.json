@@ -2,7 +2,7 @@
   "personal": {
     "name": "Subodh Adhikari",
     "title": "Full-Stack Web Developer & DevOps",
-    "tagline": "I build, containerize, and deploy complete web applications — Spring Boot backends, Angular frontends, Dockerized, shipped via CI/CD to production.",
+    "tagline": "I take your idea from wireframe to live URL — secured APIs, role-based web apps, and Docker deployments delivered end-to-end. One developer, one point of contact, no middlemen.",
     "location": "Kalimpong, West Bengal, India",
     "email": "subodhadhikari2023@outlook.com",
     "github": "https://github.com/subodhadhikari2023",
@@ -10,12 +10,12 @@
     "availableForWork": true,
     "resumeUrl": "/assets/resume/Subodh_Adhikari_Resume.pdf"
   },
-  "about": "I deliver complete, production-ready web applications — from secured backend APIs to containerized deployments on live servers. My work includes a system delivered for the Department of IT, Government of Sikkim, and CampusConnect, a fully deployed role-based academic platform with 194 automated tests and a GitHub Actions CI/CD pipeline. I focus on writing maintainable code and understanding system behavior beyond surface-level implementation.",
+  "about": "I deliver complete, production-ready web applications — from scoping and architecture through to containerized deployment on live servers. You get one developer handling the full stack: secured backend APIs, Angular or React frontends, Docker packaging, and CI/CD pipelines. My delivered work includes a system for the Department of IT, Government of Sikkim, and CampusConnect — a live multi-role academic platform with 194 automated tests. I write maintainable code, communicate clearly at every stage, and don't hand off half-finished work.",
   "stats": [
     { "label": "Projects Shipped", "value": "2+" },
     { "label": "Automated Tests", "value": "194" },
     { "label": "Government Client", "value": "1" },
-    { "label": "Years Teaching", "value": "2+" }
+    { "label": "Avg. Delivery", "value": "2–4 Wks" }
   ],
   "featuredProjects": [
     {
@@ -23,7 +23,7 @@
       "featured": true,
       "order": 1,
       "customTitle": "Internship Management Portal",
-      "customDescription": "Delivered for the Department of IT, Government of Sikkim. Digitized the state government's internship process — replacing paper workflows with role-based automation covering applications, document management, progress tracking, and certificate issuance.",
+      "customDescription": "Eliminated a 100% paper-based internship process for the Department of IT, Government of Sikkim. Built role-based automation covering applications, document management, progress tracking, and certificate issuance — delivered as a production system still in active use.",
       "highlight": "Government of Sikkim — Production Delivery",
       "liveUrl": null,
       "liveLabel": "Production system — public demo not available",
@@ -35,7 +35,7 @@
       "featured": true,
       "order": 2,
       "customTitle": "CampusConnect",
-      "customDescription": "Role-based collaborative learning platform for Admin, HOD, Teacher, and Student roles. Containerized with Docker, deployed via GitHub Actions CI/CD pipeline to GHCR and Railway. Includes 194 automated tests across controller, service, and repository layers.",
+      "customDescription": "Multi-role academic platform serving Admins, HODs, Teachers, and Students from a single system. Containerized with Docker, deployed via GitHub Actions CI/CD to Railway, with 194 automated tests ensuring reliability. Live at the URL below — log in to see it in action.",
       "highlight": "194 Tests · Docker + CI/CD · Live on Railway",
       "liveUrl": "https://campuss-connect.up.railway.app",
       "liveLabel": null,
@@ -49,12 +49,12 @@
     }
   ],
   "skills": {
-    "Languages": ["Java", "TypeScript", "JavaScript", "Python", "SQL", "Bash", "C", "C#"],
-    "Backend": ["Spring Boot", "Spring MVC", "Spring Security", "Hibernate/JPA", "REST API", "JWT", "Flask"],
-    "Frontend": ["Angular", "React", "Thymeleaf", "HTML/CSS"],
-    "DevOps": ["Docker", "Docker Compose", "GitHub Actions", "GHCR", "Railway", "Linux"],
-    "Databases": ["MySQL", "PostgreSQL", "H2"],
-    "Tools": ["Git", "Maven", "Flyway", "IntelliJ IDEA", "VS Code"]
+    "Web Applications": ["Angular", "React", "Spring Boot", "Thymeleaf", "HTML/CSS", "TypeScript"],
+    "APIs & Backend": ["Spring MVC", "Spring Security", "Hibernate/JPA", "REST API", "JWT", "Flask"],
+    "Deployment & DevOps": ["Docker", "Docker Compose", "GitHub Actions", "GHCR", "Railway", "Linux"],
+    "Data & Storage": ["MySQL", "PostgreSQL", "H2", "Flyway"],
+    "Languages": ["Java", "TypeScript", "JavaScript", "Python", "SQL", "Bash"],
+    "Tools": ["Git", "Maven", "IntelliJ IDEA", "VS Code"]
   },
   "experience": [
     {
@@ -94,15 +94,15 @@
     }
   ],
   "certifications": [
-    { "name": "Spring Boot 3, Spring 6 & Hibernate for Beginners", "issuer": "Udemy", "date": "Nov 2024" },
-    { "name": "The Complete Java Certification Course", "issuer": "Udemy", "date": "Feb 2023" },
-    { "name": "Introduction to Containers w/ Docker, Kubernetes & OpenShift", "issuer": "IBM / Coursera", "date": "Jul 2024" },
-    { "name": "Developing AI Applications with Python and Flask", "issuer": "IBM / Coursera", "date": "Jul 2024" },
-    { "name": "Python for Data Science, AI & Development", "issuer": "IBM / Coursera", "date": "Jun 2024" },
-    { "name": "Introduction to Cloud Computing", "issuer": "IBM / Coursera", "date": "Jun 2024" },
-    { "name": "Introduction to DevOps", "issuer": "IBM / Coursera", "date": "Jun 2024" },
-    { "name": "Hands-on Introduction to Linux Commands and Shell Scripting", "issuer": "IBM / Coursera", "date": "Jun 2024" },
-    { "name": "Getting Started with Git and GitHub", "issuer": "IBM / Coursera", "date": "Jun 2024" },
-    { "name": "Introduction to Agile Development and Scrum", "issuer": "IBM / Coursera", "date": "Jun 2024" }
+    { "name": "Spring Boot 3, Spring 6 & Hibernate for Beginners", "issuer": "Udemy", "date": "Nov 2024", "screenshot": "/assets/certifications/spring-boot.png" },
+    { "name": "The Complete Java Certification Course", "issuer": "Udemy", "date": "Feb 2023", "screenshot": "/assets/certifications/java.png" },
+    { "name": "Introduction to Containers w/ Docker, Kubernetes & OpenShift", "issuer": "IBM / Coursera", "date": "Jul 2024", "screenshot": "/assets/certifications/docker.png" },
+    { "name": "Developing AI Applications with Python and Flask", "issuer": "IBM / Coursera", "date": "Jul 2024", "screenshot": "/assets/certifications/flask.png" },
+    { "name": "Python for Data Science, AI & Development", "issuer": "IBM / Coursera", "date": "Jun 2024", "screenshot": "/assets/certifications/python.png" },
+    { "name": "Introduction to Cloud Computing", "issuer": "IBM / Coursera", "date": "Jun 2024", "screenshot": "/assets/certifications/cloud.png" },
+    { "name": "Introduction to DevOps", "issuer": "IBM / Coursera", "date": "Jun 2024", "screenshot": "/assets/certifications/devops.png" },
+    { "name": "Hands-on Introduction to Linux Commands and Shell Scripting", "issuer": "IBM / Coursera", "date": "Jun 2024", "screenshot": "/assets/certifications/linux.png" },
+    { "name": "Getting Started with Git and GitHub", "issuer": "IBM / Coursera", "date": "Jun 2024", "screenshot": "/assets/certifications/git-github.png" },
+    { "name": "Introduction to Agile Development and Scrum", "issuer": "IBM / Coursera", "date": "Jun 2024", "screenshot": "/assets/certifications/agile.png" }
   ]
 }

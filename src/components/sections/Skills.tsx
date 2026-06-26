@@ -7,12 +7,12 @@ interface SkillsProps {
 }
 
 const CATEGORY_ICONS: Record<string, string> = {
-  Languages: '{ }',
-  Backend: '⚙',
-  Frontend: '◈',
-  DevOps: '⬡',
-  Databases: '▤',
-  Tools: '⚒',
+  'Web Applications': '◈',
+  'APIs & Backend': '⚙',
+  'Deployment & DevOps': '⬡',
+  'Data & Storage': '▤',
+  'Languages': '{ }',
+  'Tools': '⚒',
 }
 
 export default function Skills({ skills }: SkillsProps) {
@@ -24,7 +24,7 @@ export default function Skills({ skills }: SkillsProps) {
         <AnimatedSection>
           <SectionHeader
             title="Skills"
-            subtitle="Technologies I work with — backed by projects and certifications."
+            subtitle="What I can build for you — grouped by deliverable, backed by shipped projects."
           />
         </AnimatedSection>
 

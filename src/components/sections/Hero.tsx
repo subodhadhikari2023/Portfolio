@@ -52,7 +52,7 @@ export default function Hero({ personal }: HeroProps) {
               <motion.div {...fadeUp(0)}>
                 <span className="inline-flex items-center gap-2 text-sm px-3 py-1.5 glass rounded-full text-[var(--text-secondary)]">
                   <span className="w-2 h-2 rounded-full bg-success animate-pulse" />
-                  Available for Freelance Work
+                  Available for Projects — 2–4 Week Delivery
                 </span>
               </motion.div>
             )}

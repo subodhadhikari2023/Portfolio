@@ -32,7 +32,7 @@ export default function Contact({ personal }: ContactProps) {
       value: personal.email,
       href: `mailto:${personal.email}`,
       icon: <MailIcon />,
-      description: 'Send me a message',
+      description: 'Start a project conversation',
     },
     {
       label: 'GitHub',
@@ -55,12 +55,15 @@ export default function Contact({ personal }: ContactProps) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
         <AnimatedSection>
           <SectionHeader
-            title="Let's Work Together"
-            subtitle="Open to full-stack and DevOps freelance engagements — web applications, API development, backend systems, or end-to-end delivery."
+            title="Start a Project"
+            subtitle="Tell me what you need — I'll send a scoped proposal within 24 hours."
           />
+          <p className="mt-4 text-sm text-[var(--text-secondary)] max-w-xl mx-auto leading-relaxed">
+            Web app from scratch, a backend API, or a full deployment pipeline — reach out via email with a brief description and I&apos;ll get back to you same day.
+          </p>
         </AnimatedSection>
 
-        <div className="grid sm:grid-cols-3 gap-4 mt-12 max-w-3xl mx-auto">
+        <div className="grid sm:grid-cols-3 gap-4 mt-10 max-w-3xl mx-auto">
           {contacts.map((contact, i) => (
             <AnimatedSection key={contact.label} delay={0.1 + i * 0.1}>
               <a

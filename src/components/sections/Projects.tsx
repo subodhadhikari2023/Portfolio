@@ -1,7 +1,7 @@
-import Image from 'next/image'
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import SectionHeader from '@/components/ui/SectionHeader'
 import GlassCard from '@/components/ui/GlassCard'
+import ProjectCarousel from '@/components/ui/ProjectCarousel'
 import type { FeaturedProject } from '@/lib/types'
 
 interface ProjectsProps {
@@ -36,28 +36,9 @@ export default function Projects({ projects }: ProjectsProps) {
           {projects.map((project, i) => (
             <AnimatedSection key={project.repo} delay={0.1 + i * 0.1}>
               <GlassCard className="h-full flex flex-col overflow-hidden">
-                {/* Screenshot strip — scroll-snap carousel, CSS only */}
+                {/* Screenshot carousel */}
                 {project.screenshots && project.screenshots.length > 0 && (
-                  <div
-                    className="flex overflow-x-auto no-scrollbar snap-x snap-mandatory"
-                    style={{ scrollSnapType: 'x mandatory' }}
-                  >
-                    {project.screenshots.map((src, idx) => (
-                      <div
-                        key={idx}
-                        className="relative flex-shrink-0 w-full snap-start"
-                        style={{ aspectRatio: '16/9' }}
-                      >
-                        <Image
-                          src={src}
-                          alt={`${project.customTitle} screenshot ${idx + 1}`}
-                          fill
-                          className="object-cover object-top"
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
-                      </div>
-                    ))}
-                  </div>
+                  <ProjectCarousel images={project.screenshots} title={project.customTitle} />
                 )}
 
                 <div className="p-6 flex flex-col flex-1">

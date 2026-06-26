@@ -56,6 +56,7 @@ export interface Certification {
   name: string
   issuer: string
   date: string
+  screenshot?: string
 }
 
 export interface PortfolioData {
