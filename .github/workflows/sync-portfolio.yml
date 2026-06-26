@@ -47,16 +47,16 @@ jobs:
           body: |
             This PR was opened automatically by the Portfolio Sync workflow.
 
-            ## Before merging
+            Fields were **pre-filled from the repository README**. Review each `"_draft": true` entry in `src/data/portfolio.json` and check:
 
-            Open `src/data/portfolio.json` and for every entry with `"_draft": true`:
+            1. **`customTitle`** — parsed from the README H1 heading
+            2. **`customDescription`** — parsed from the first README paragraph
+            3. **`highlight`** — parsed from test counts or deployment mentions (often needs a manual touch)
+            4. **`tags`** — parsed from the README Tech Stack section + repo topics
+            5. **`liveUrl`** — parsed from README demo links or repo homepage
+            6. **Delete `"_draft": true`** — draft entries are hidden on the live site until removed
 
-            1. **`customTitle`** — your display name for the project
-            2. **`customDescription`** — 1–2 sentences, outcome-first (what it does and why it matters)
-            3. **`highlight`** — one punchy line: key stat, client, or deployment fact
-            4. **`tags`** — exact tech used (check the auto-filled list and correct it)
-            5. **`liveUrl`** — deployed URL, or `null` if not public
-            6. **Delete `"_draft": true`** — draft entries are hidden on the live site
+            If a repo had no README, one was created automatically — push any updates to it before merging.
 
             Once you merge, Vercel deploys within 60 seconds.
 
