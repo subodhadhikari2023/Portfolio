@@ -1,7 +1,7 @@
 {
   "personal": {
     "name": "Subodh Adhikari",
-    "title": "Full-Stack Developer & DevOps Engineer",
+    "title": "Full-Stack Developer & DevOps Engineer — Available for Freelance",
     "tagline": "I take your idea from wireframe to live URL — secured APIs, role-based web apps, and Docker deployments delivered end-to-end. One developer, one point of contact, no middlemen.",
     "location": "Kalimpong, West Bengal, India",
     "email": "subodhadhikari2023@outlook.com",
@@ -35,8 +35,8 @@
       "featured": true,
       "order": 2,
       "customTitle": "CampusConnect",
-      "customDescription": "Multi-role academic platform serving Admins, HODs, Teachers, and Students from a single system. Containerized with Docker, deployed via GitHub Actions CI/CD to Railway, with 194 automated tests ensuring reliability. Live at the URL below — log in to see it in action.",
-      "highlight": "194 Tests · Docker + CI/CD · Live on Railway",
+      "customDescription": "MCA mini-project, later extended into a full production deployment. Multi-role academic platform serving Admins, HODs, Teachers, and Students from a single system. Containerized with Docker, deployed via GitHub Actions CI/CD to Railway, with 194 automated tests ensuring reliability.",
+      "highlight": "MCA Mini-Project · 194 Tests · Live on Railway",
       "liveUrl": "https://campuss-connect.up.railway.app",
       "liveLabel": null,
       "collaborator": "Built with Manav Agarwal",
