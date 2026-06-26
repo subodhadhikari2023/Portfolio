@@ -8,6 +8,9 @@ interface HeroProps {
   personal: Personal
 }
 
+const STACK = ['Spring Boot', 'Angular', 'Docker', 'GitHub Actions', 'MySQL']
+const PIPELINE = ['Build', 'Test', 'Containerize', 'Deploy']
+
 const GitHubIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
     <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
@@ -47,7 +50,7 @@ export default function Hero({ personal }: HeroProps) {
         <div className="grid md:grid-cols-2 gap-12 items-center">
 
           {/* Left — text */}
-          <div className="space-y-6">
+          <div className="space-y-5">
             {personal.availableForWork && (
               <motion.div {...fadeUp(0)}>
                 <span className="inline-flex items-center gap-2 text-sm px-3 py-1.5 glass rounded-full text-[var(--text-secondary)]">
@@ -71,12 +74,40 @@ export default function Hero({ personal }: HeroProps) {
               {personal.tagline}
             </motion.p>
 
-            <motion.div {...fadeUp(0.4)} className="flex flex-wrap gap-3">
+            {/* Tech stack badges */}
+            <motion.div {...fadeUp(0.38)} className="flex flex-wrap gap-2">
+              {STACK.map((tech) => (
+                <span
+                  key={tech}
+                  className="text-xs px-2.5 py-1 glass rounded-md text-[var(--text-secondary)] font-mono hover:text-[var(--text-primary)] hover:border-accent-cyan/30 transition-colors duration-200"
+                >
+                  {tech}
+                </span>
+              ))}
+            </motion.div>
+
+            {/* Delivery pipeline */}
+            <motion.div {...fadeUp(0.42)} className="flex items-center gap-1.5 text-xs">
+              {PIPELINE.map((step, i) => (
+                <span key={step} className="flex items-center gap-1.5">
+                  <span className={`font-medium ${i === 2 ? 'text-accent-cyan' : 'text-[var(--text-secondary)]'}`}>
+                    {step}
+                  </span>
+                  {i < PIPELINE.length - 1 && (
+                    <span className="text-accent-cyan/60">→</span>
+                  )}
+                </span>
+              ))}
+              <span className="ml-1 text-[var(--text-secondary)] opacity-50">· end-to-end</span>
+            </motion.div>
+
+            {/* CTA buttons */}
+            <motion.div {...fadeUp(0.48)} className="flex flex-wrap gap-3 pt-1">
               <a
                 href="#contact"
-                className="px-6 py-3 gradient-bg rounded-xl text-white font-semibold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-accent-purple/20"
+                className="px-6 py-3 gradient-bg rounded-xl text-white font-semibold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-[rgba(var(--accent-purple-rgb),0.25)]"
               >
-                Hire Me
+                Start a Project
               </a>
               <a
                 href="#projects"
@@ -93,7 +124,8 @@ export default function Hero({ personal }: HeroProps) {
               </a>
             </motion.div>
 
-            <motion.div {...fadeUp(0.5)} className="flex items-center gap-4 pt-2">
+            {/* Social + location */}
+            <motion.div {...fadeUp(0.55)} className="flex items-center gap-4 pt-1">
               <a
                 href={personal.github}
                 target="_blank"
@@ -130,10 +162,10 @@ export default function Hero({ personal }: HeroProps) {
               <div className="absolute -inset-3 rounded-3xl border border-accent-cyan/20" />
               <div className="absolute -inset-6 rounded-3xl border border-accent-purple/10" />
               {/* Image */}
-              <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-2xl overflow-hidden glass border border-[var(--glass-border)]">
+              <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-2xl overflow-hidden glass border border-[var(--glass-border)] shadow-2xl shadow-[rgba(var(--accent-purple-rgb),0.15)]">
                 <Image
                   src="/assets/hero-image.jpeg"
-                  alt="Subodh Adhikari — Full-Stack Developer"
+                  alt="Subodh Adhikari — Full-Stack Developer & DevOps Engineer"
                   fill
                   className="object-cover object-top"
                   priority
@@ -146,7 +178,7 @@ export default function Hero({ personal }: HeroProps) {
 
         {/* Scroll hint */}
         <motion.div
-          {...fadeUp(0.8)}
+          {...fadeUp(0.9)}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[var(--text-secondary)] flex flex-col items-center gap-1 text-xs"
         >
           <ArrowDown />

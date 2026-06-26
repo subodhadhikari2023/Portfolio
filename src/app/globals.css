@@ -21,12 +21,23 @@
 }
 
 .dark {
-  --bg-primary: #0a0f1e;
-  --bg-secondary: #0d1526;
+  --bg-primary: #080d1a;
+  --bg-secondary: #0b1121;
   --text-primary: #e2e8f0;
   --text-secondary: #94a3b8;
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.09);
+}
+
+/* Subtle dot grid for dark mode depth */
+.dark body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(var(--accent-cyan-rgb), 0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+  z-index: 0;
 }
 
 html {
@@ -58,6 +69,11 @@ body {
   border: 1px solid var(--glass-border);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+.dark .glass {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 1px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 /* Background orbs — pure CSS, no JS */
@@ -70,26 +86,26 @@ body {
 }
 
 .orb-1 {
-  width: 500px;
-  height: 500px;
-  background: rgba(var(--accent-cyan-rgb), 0.12);
-  top: -150px;
-  right: -100px;
+  width: 600px;
+  height: 600px;
+  background: rgba(var(--accent-cyan-rgb), 0.13);
+  top: -200px;
+  right: -120px;
   animation: float1 10s ease-in-out infinite;
 }
 
 .orb-2 {
-  width: 400px;
-  height: 400px;
-  background: rgba(var(--accent-purple-rgb), 0.1);
-  bottom: 0;
-  left: -80px;
+  width: 500px;
+  height: 500px;
+  background: rgba(var(--accent-purple-rgb), 0.11);
+  bottom: -60px;
+  left: -100px;
   animation: float2 12s ease-in-out infinite;
 }
 
 .orb-3 {
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
   background: rgba(var(--color-orb-mid-rgb), 0.07);
   top: 40%;
   left: 35%;
