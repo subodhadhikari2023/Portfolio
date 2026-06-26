@@ -168,28 +168,38 @@ async function main() {
   const portfolio = JSON.parse(readFileSync(PORTFOLIO_PATH, 'utf-8'))
   const existing = new Set(portfolio.featuredProjects.map(p => p.repo))
 
-  // 3. Only process repos not already in portfolio.json
-  const newRepos = tagged.filter(r => !existing.has(r.name))
-  if (newRepos.length === 0) {
-    console.log('✓ portfolio.json is already up to date — nothing to add.')
+  // 3. Process: new repos + any existing entries still marked _draft
+  const publishedRepos = new Set(
+    portfolio.featuredProjects.filter(p => !p._draft).map(p => p.repo)
+  )
+  const toProcess = tagged.filter(r => !publishedRepos.has(r.name))
+
+  if (toProcess.length === 0) {
+    console.log('✓ portfolio.json is already up to date — nothing to add or promote.')
     return
   }
 
-  // 4. For each new repo: fetch/create README, parse it, build draft entry
+  // 4. For each repo to process: fetch/create README, build live entry
   const maxOrder = portfolio.featuredProjects.reduce((m, p) => Math.max(m, p.order ?? 0), 0)
-  const drafts = []
+  let newCount = 0
 
-  for (let i = 0; i < newRepos.length; i++) {
-    const repo = newRepos[i]
+  for (let i = 0; i < toProcess.length; i++) {
+    const repo = toProcess[i]
     console.log(`\nProcessing ${repo.name}...`)
 
     const markdown = await ensureReadme(repo)
     const parsed = parseReadme(markdown, repo)
 
-    drafts.push({
+    // Find if it already exists as a draft (to update in-place) or is brand new
+    const draftIdx = portfolio.featuredProjects.findIndex(p => p.repo === repo.name && p._draft)
+    const order = draftIdx >= 0
+      ? portfolio.featuredProjects[draftIdx].order
+      : maxOrder + (++newCount)
+
+    const entry = {
       repo: repo.name,
       featured: true,
-      order: maxOrder + i + 1,
+      order,
       customTitle: parsed.title,
       customDescription: parsed.description,
       highlight: parsed.highlight,
@@ -197,21 +207,26 @@ async function main() {
       liveLabel: parsed.liveUrl ? 'Live Demo' : null,
       collaborator: null,
       tags: parsed.tags,
-    })
+    }
+
+    if (draftIdx >= 0) {
+      portfolio.featuredProjects[draftIdx] = entry
+      console.log(`  ✓ promoted draft → live`)
+    } else {
+      portfolio.featuredProjects.push(entry)
+      console.log(`  ✓ added new entry`)
+    }
 
     console.log(`  ✓ title:       ${parsed.title}`)
     console.log(`  ✓ description: ${parsed.description.slice(0, 80)}`)
     console.log(`  ✓ tags:        ${parsed.tags.join(', ') || 'none'}`)
     console.log(`  ✓ liveUrl:     ${parsed.liveUrl ?? 'none'}`)
     console.log(`  ✓ highlight:   ${parsed.highlight}`)
-    console.log(`  → Review and remove "_draft": true when ready to publish`)
   }
-
-  portfolio.featuredProjects.push(...drafts)
 
   // 5. Write back
   writeFileSync(PORTFOLIO_PATH, JSON.stringify(portfolio, null, 2) + '\n')
-  console.log(`\n✓ Added ${drafts.length} draft entry/entries to portfolio.json`)
+  console.log(`\n✓ Processed ${toProcess.length} repo(s) — portfolio.json updated`)
 }
 
 main().catch(e => {
