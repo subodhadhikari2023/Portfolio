@@ -197,7 +197,6 @@ async function main() {
       liveLabel: parsed.liveUrl ? 'Live Demo' : null,
       collaborator: null,
       tags: parsed.tags,
-      _draft: true,
     })
 
     console.log(`  ✓ title:       ${parsed.title}`)
