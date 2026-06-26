@@ -1,0 +1,108 @@
+{
+  "personal": {
+    "name": "Subodh Adhikari",
+    "title": "Full-Stack Developer & DevOps Engineer",
+    "tagline": "I take your idea from wireframe to live URL — secured APIs, role-based web apps, and Docker deployments delivered end-to-end. One developer, one point of contact, no middlemen.",
+    "location": "Kalimpong, West Bengal, India",
+    "email": "subodhadhikari2023@outlook.com",
+    "github": "https://github.com/subodhadhikari2023",
+    "linkedin": "https://www.linkedin.com/in/subodh-adhikari-4b811a296/",
+    "availableForWork": true,
+    "resumeUrl": "/assets/resume/Subodh_Adhikari_Resume.pdf"
+  },
+  "about": "I deliver complete, production-ready web applications — from scoping and architecture through to containerized deployment on live servers. You get one developer handling the full stack: secured backend APIs, Angular or React frontends, Docker packaging, and CI/CD pipelines. My delivered work includes a system for the Department of IT, Government of Sikkim, and CampusConnect — a live multi-role academic platform with 194 automated tests. I write maintainable code, communicate clearly at every stage, and don't hand off half-finished work.",
+  "stats": [
+    { "label": "Projects Shipped", "value": "2+" },
+    { "label": "Automated Tests", "value": "194" },
+    { "label": "Government Client", "value": "1" },
+    { "label": "Avg. Delivery", "value": "2–4 Wks" }
+  ],
+  "featuredProjects": [
+    {
+      "repo": "Internship-Portal",
+      "featured": true,
+      "order": 1,
+      "customTitle": "Internship Management Portal",
+      "customDescription": "Eliminated a 100% paper-based internship process for the Department of IT, Government of Sikkim. Built role-based automation covering applications, document management, progress tracking, and certificate issuance — delivered as a production system still in active use.",
+      "highlight": "Government of Sikkim — Production Delivery",
+      "liveUrl": null,
+      "liveLabel": "Production system — public demo not available",
+      "collaborator": null,
+      "tags": ["Angular 14", "TypeScript", "Spring Boot", "Spring Security", "JWT", "Hibernate", "MySQL"]
+    },
+    {
+      "repo": "CampusConnect",
+      "featured": true,
+      "order": 2,
+      "customTitle": "CampusConnect",
+      "customDescription": "Multi-role academic platform serving Admins, HODs, Teachers, and Students from a single system. Containerized with Docker, deployed via GitHub Actions CI/CD to Railway, with 194 automated tests ensuring reliability. Live at the URL below — log in to see it in action.",
+      "highlight": "194 Tests · Docker + CI/CD · Live on Railway",
+      "liveUrl": "https://campuss-connect.up.railway.app",
+      "liveLabel": null,
+      "collaborator": "Built with Manav Agarwal",
+      "screenshots": [
+        "/assets/screenshots/cc-landing.png",
+        "/assets/screenshots/cc-login.png",
+        "/assets/screenshots/cc-dashboard.png"
+      ],
+      "tags": ["Spring Boot", "Thymeleaf", "Hibernate", "MySQL", "Docker", "GitHub Actions", "JUnit 5"]
+    }
+  ],
+  "skills": {
+    "Web Applications": ["Angular", "React", "Spring Boot", "Thymeleaf", "HTML/CSS", "TypeScript"],
+    "APIs & Backend": ["Spring MVC", "Spring Security", "Hibernate/JPA", "REST API", "JWT", "Flask"],
+    "Deployment & DevOps": ["Docker", "Docker Compose", "GitHub Actions", "GHCR", "Railway", "Linux"],
+    "Data & Storage": ["MySQL", "PostgreSQL", "H2", "Flyway"],
+    "Languages": ["Java", "TypeScript", "JavaScript", "Python", "SQL", "Bash"],
+    "Tools": ["Git", "Maven", "IntelliJ IDEA", "VS Code"]
+  },
+  "experience": [
+    {
+      "role": "Intern",
+      "org": "Department of IT, Government of Sikkim",
+      "period": "Jan 2025 – May 2025",
+      "description": "Developed the Internship Management Portal — replacing manual paper workflows with a fully automated, role-based system handling applications, document management, progress tracking, and certificate issuance.",
+      "highlight": true
+    },
+    {
+      "role": "TGT Computer",
+      "org": "APS Kalimpong",
+      "period": "May 2025 – Oct 2025",
+      "description": "Taught computer science fundamentals and programming.",
+      "highlight": false
+    },
+    {
+      "role": "Lecturer",
+      "org": "ICFAI University, Sikkim",
+      "period": "2024 – Present",
+      "description": "Teaching UI/UX, Cybersecurity, and OOPs.",
+      "highlight": false
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master of Computer Applications (MCA)",
+      "institution": "Sikkim Manipal Institute of Technology",
+      "period": "2023 – 2025",
+      "cgpa": "7.7 / 10"
+    },
+    {
+      "degree": "Bachelor of Computer Applications (BCA)",
+      "institution": "Brainware University, Barasat",
+      "period": "2020 – 2023",
+      "cgpa": "9.04 / 10"
+    }
+  ],
+  "certifications": [
+    { "name": "Spring Boot 3, Spring 6 & Hibernate for Beginners", "issuer": "Udemy", "date": "Nov 2024", "screenshot": "/assets/certifications/spring-boot.png" },
+    { "name": "The Complete Java Certification Course", "issuer": "Udemy", "date": "Feb 2023", "screenshot": "/assets/certifications/java.png" },
+    { "name": "Introduction to Containers w/ Docker, Kubernetes & OpenShift", "issuer": "IBM / Coursera", "date": "Jul 2024", "screenshot": "/assets/certifications/docker.png" },
+    { "name": "Developing AI Applications with Python and Flask", "issuer": "IBM / Coursera", "date": "Jul 2024", "screenshot": "/assets/certifications/flask.png" },
+    { "name": "Python for Data Science, AI & Development", "issuer": "IBM / Coursera", "date": "Jun 2024", "screenshot": "/assets/certifications/python.png" },
+    { "name": "Introduction to Cloud Computing", "issuer": "IBM / Coursera", "date": "Jun 2024", "screenshot": "/assets/certifications/cloud.png" },
+    { "name": "Introduction to DevOps", "issuer": "IBM / Coursera", "date": "Jun 2024", "screenshot": "/assets/certifications/devops.png" },
+    { "name": "Hands-on Introduction to Linux Commands and Shell Scripting", "issuer": "IBM / Coursera", "date": "Jun 2024", "screenshot": "/assets/certifications/linux.png" },
+    { "name": "Getting Started with Git and GitHub", "issuer": "IBM / Coursera", "date": "Jun 2024", "screenshot": "/assets/certifications/git-github.png" },
+    { "name": "Introduction to Agile Development and Scrum", "issuer": "IBM / Coursera", "date": "Jun 2024", "screenshot": "/assets/certifications/agile.png" }
+  ]
+}
