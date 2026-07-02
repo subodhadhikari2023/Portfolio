@@ -98,6 +98,18 @@
       "liveLabel": null,
       "collaborator": null,
       "tags": []
+    },
+    {
+      "repo": "SCOMP",
+      "featured": true,
+      "order": 5,
+      "customTitle": "S.C.O.M.P",
+      "customDescription": "![Docker Image](https://github.com/subodhadhikari2023/SCOMP/pkgs/container/scomp)",
+      "highlight": "live in `config/queries.",
+      "liveUrl": null,
+      "liveLabel": null,
+      "collaborator": null,
+      "tags": []
     }
   ],
   "skills": {
