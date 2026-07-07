@@ -94,11 +94,24 @@ function buildReadmeTemplate(repo) {
 async function fetchScreenshots(repoName) {
   for (const folder of ['docs/screenshots', 'screenshots']) {
     try {
-      const files = await gh(`/repos/${USERNAME}/${repoName}/contents/${folder}`)
-      if (!Array.isArray(files)) continue
-      const images = files
-        .filter(f => f.type === 'file' && /\.(png|jpe?g|gif|webp)$/i.test(f.name))
-        .map(f => f.download_url)
+      const entries = await gh(`/repos/${USERNAME}/${repoName}/contents/${folder}`)
+      if (!Array.isArray(entries)) continue
+
+      const isImage = f => f.type === 'file' && /\.(png|jpe?g|gif|webp)$/i.test(f.name)
+      const images = []
+
+      // Root-level images first
+      images.push(...entries.filter(isImage).map(f => f.download_url))
+
+      // One level of subfolders — up to 5 images each
+      for (const dir of entries.filter(f => f.type === 'dir')) {
+        try {
+          const sub = await gh(`/repos/${USERNAME}/${repoName}/contents/${folder}/${dir.name}`)
+          if (!Array.isArray(sub)) continue
+          images.push(...sub.filter(isImage).slice(0, 5).map(f => f.download_url))
+        } catch { /* subfolder inaccessible — skip */ }
+      }
+
       if (images.length > 0) return images
     } catch {
       // folder doesn't exist — try next
