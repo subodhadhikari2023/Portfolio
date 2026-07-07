@@ -56,7 +56,7 @@
       "order": 2,
       "customTitle": "CampusConnect",
       "customDescription": "CampusConnect is a Spring Boot web application providing a unified academic workspace for four roles — Admin, HOD, Teacher, and Student. Each role has its own dashboard and a permission-scoped set of actions, enforced at every request by Spring Security.",
-      "highlight": "194 tests",
+      "highlight": "194 automated tests — deployed to Railway via GitHub Actions CI/CD.",
       "liveUrl": "https://campuss-connect.up.railway.app",
       "liveLabel": null,
       "collaborator": "Built with Manav Agarwal",
@@ -84,7 +84,16 @@
         "https://raw.githubusercontent.com/subodhadhikari2023/CampusConnect/main/docs/screenshots/teacher/teacher_browse.png",
         "https://raw.githubusercontent.com/subodhadhikari2023/CampusConnect/main/docs/screenshots/teacher/teacher_my_subjects.png"
       ],
-      "tags": []
+      "tags": [
+        "Spring Boot",
+        "Thymeleaf",
+        "Spring Security",
+        "Hibernate",
+        "MySQL",
+        "Docker",
+        "GitHub Actions",
+        "JUnit 5"
+      ]
     },
     {
       "repo": "SCOMP",
@@ -92,7 +101,7 @@
       "order": 3,
       "customTitle": "S.C.O.M.P — Stealth Collection, Outreach & Messaging Pipeline",
       "customDescription": "Python CLI automation framework for personalized cold email outreach — lead discovery, scraping, copywriting, and drip dispatch via Outlook Web, tracked in SQLite with a Rich terminal dashboard.",
-      "highlight": null,
+      "highlight": "Dockerized and published to GHCR — zero paid APIs.",
       "liveUrl": "https://github.com/subodhadhikari2023/SCOMP/pkgs/container/scomp",
       "liveLabel": "View Container Image",
       "collaborator": null,
@@ -110,49 +119,40 @@
     }
   ],
   "skills": {
-    "Web Applications": [
-      "Angular",
-      "React",
-      "Spring Boot",
-      "Thymeleaf",
-      "HTML/CSS",
-      "TypeScript"
-    ],
-    "APIs & Backend": [
-      "Spring MVC",
-      "Spring Security",
-      "Hibernate/JPA",
-      "REST API",
-      "JWT",
-      "Flask"
-    ],
-    "Deployment & DevOps": [
-      "Docker",
-      "Docker Compose",
-      "GitHub Actions",
-      "GHCR",
-      "Railway",
-      "Linux"
-    ],
-    "Data & Storage": [
-      "MySQL",
-      "PostgreSQL",
-      "H2",
-      "Flyway"
-    ],
     "Languages": [
       "Java",
       "TypeScript",
       "JavaScript",
+      "PLSQL",
       "Python",
-      "SQL",
-      "Bash"
+      "Python 3.14",
+      "python-dotenv"
+    ],
+    "Web Applications": [
+      "Angular 14",
+      "Thymeleaf"
+    ],
+    "APIs & Backend": [
+      "Spring Boot",
+      "Spring Security",
+      "JWT",
+      "Hibernate",
+      "httpx",
+      "BeautifulSoup4"
+    ],
+    "Data & Storage": [
+      "MySQL",
+      "SQLite"
+    ],
+    "Deployment & DevOps": [
+      "Docker",
+      "GitHub Actions"
     ],
     "Tools": [
-      "Git",
-      "Maven",
-      "IntelliJ IDEA",
-      "VS Code"
+      "JUnit 5",
+      "Playwright (Firefox)",
+      "Rich",
+      "pyyaml"
     ]
   },
   "experience": [
