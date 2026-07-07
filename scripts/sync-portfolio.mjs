@@ -115,17 +115,9 @@ function parseReadme(markdown, repo) {
     ? titleLine.replace(/^#\s+/, '').trim()
     : repo.name.replace(/-/g, ' ')
 
-  // Description: first non-empty paragraph that isn't a heading, image, or badge
-  const titleIdx = titleLine ? lines.indexOf(titleLine) : -1
-  let description = ''
-  for (let i = titleIdx + 1; i < lines.length; i++) {
-    const line = lines[i].trim()
-    if (line && !line.startsWith('#') && !line.startsWith('!') && !line.startsWith('<') && !line.startsWith('>')) {
-      description = line.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').trim()
-      break
-    }
-  }
-  if (!description) description = repo.description ?? `[TODO: describe ${repo.name}]`
+  // Description: sourced from the GitHub repo's description field (more reliable than
+  // parsing README prose, which varies widely in structure across repos).
+  const description = repo.description ?? `[TODO: describe ${repo.name}]`
 
   // Live URL: look for demo/live links in the markdown, fall back to repo homepage
   const liveMatch = markdown.match(
@@ -133,22 +125,62 @@ function parseReadme(markdown, repo) {
   )
   const liveUrl = liveMatch ? liveMatch[1] : (repo.homepage || null)
 
-  // Tags: parse "Tech Stack / Technologies / Built With" section, supplement with repo topics
+  // Tags: parse "Tech Stack / Technologies / Built With" section, supplement with repo topics.
+  // READMEs use three different shapes for this section in practice, so we detect and
+  // handle each:
+  //   (a) bullet list      — "- Spring Boot"
+  //   (b) markdown table    — "| Layer | Technology |" rows — the label column (first
+  //                           cell) is a category like "Language", not a tech name, so we
+  //                           keep only the remaining cell(s)
+  //   (c) delimiter line    — a single line of items separated by · or , with no
+  //                           bullets/table at all, e.g. "Python · httpx · SQLite"
   const techSection = markdown.match(
     /##\s*(?:tech\s*stack|technologies|built\s*with|tools\s*used)[^\n]*\n([\s\S]*?)(?=\n##|$)/i
   )
   let tags = (repo.topics ?? []).filter(t => t !== TOPIC)
   if (techSection) {
-    const parsed = techSection[1]
-      .split('\n')
-      .map(l => l.replace(/^[-*•]\s+/, '').replace(/\*\*/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').trim())
-      .filter(l => l && l.length > 0 && l.length < 40 && !l.startsWith('#'))
+    const rawLines = techSection[1].split('\n').map(l => l.trim()).filter(Boolean)
+    let parsed = []
+
+    const bulletLines = rawLines.filter(l => /^[-*•]\s+/.test(l))
+    const tableLines = rawLines.filter(l => l.startsWith('|'))
+
+    if (bulletLines.length > 0) {
+      parsed = bulletLines.map(l =>
+        l.replace(/^[-*•]\s+/, '').replace(/\*\*/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').trim()
+      )
+    } else if (tableLines.length > 0) {
+      parsed = tableLines
+        .filter(l => !/^\|[\s|:-]+\|$/.test(l)) // drop separator rows like |---|---|
+        .slice(1) // drop header row (assumed to be "| Layer | Technology |")
+        .flatMap(l =>
+          l.split('|').map(c => c.trim()).filter(Boolean)
+            .slice(1) // drop the category/label column, keep only tech name cell(s)
+            .flatMap(c => c.split(',').map(x => x.trim()))
+        )
+    } else if (rawLines.some(l => l.includes('·') || l.includes(','))) {
+      // Delimiter-separated single line, e.g. "Python 3.14 · httpx · SQLite · Docker"
+      parsed = rawLines
+        .join(' ')
+        .split(/[·,]/)
+        .map(x => x.replace(/\*\*/g, '').trim())
+        .filter(Boolean)
+    }
+
+    parsed = parsed.filter(l => l && l.length > 0 && l.length < 40 && !l.startsWith('#'))
     if (parsed.length > 0) tags = [...new Set([...tags, ...parsed])]
   }
 
-  // Highlight: prefer a test/user count stat, then a "deployed/production" sentence
-  const statMatch = markdown.match(/(\d+\+?\s*(?:tests?|automated\s*tests?|endpoints?|features?|users?|requests?\/s))/i)
-  const prodMatch = markdown.match(/(?:deployed|production|live)[^\n.!?]*(?:[.!?])/i)
+  // Highlight: prefer a test/user count stat, then a genuine deployment-status sentence.
+  // The old regex matched the bare word "live" anywhere (e.g. "queries live in
+  // config/queries.yaml" — meaning "reside," not "deployed"), and could match inside
+  // inline code spans. We now require specific deployment phrasing and strip inline
+  // code (`...`) before searching so config paths can't be mistaken for a claim.
+  const searchableText = markdown.replace(/`[^`]*`/g, '')
+  const statMatch = searchableText.match(/(\d+\+?\s*(?:tests?|automated\s*tests?|endpoints?|features?|users?|requests?\/s))/i)
+  const prodMatch = searchableText.match(
+    /(?:is\s+live|live\s+(?:at|on|demo|instance)|currently\s+deployed|deployed\s+(?:to|on|via)|in\s+production|production[- ]ready|production\s+system)[^\n.!?]*[.!?]/i
+  )
   const highlight = statMatch
     ? statMatch[0].trim()
     : prodMatch
@@ -168,9 +200,16 @@ async function main() {
   const portfolio = JSON.parse(readFileSync(PORTFOLIO_PATH, 'utf-8'))
   const existing = new Set(portfolio.featuredProjects.map(p => p.repo))
 
-  // 3. Process: new repos + any existing entries still marked _draft
+  // 3. Process: new repos + any existing entries still marked _draft + any repo named in
+  // FORCE_REFRESH. Without this, a repo whose README improves AFTER its portfolio entry
+  // was created stays stuck with whatever was parsed the first time — there was previously
+  // no way to tell the script "re-read this one," short of manually deleting its entry.
+  //   FORCE_REFRESH=SCOMP,CampusConnect node scripts/sync-portfolio.mjs
+  const forceRefresh = new Set(
+    (process.env.FORCE_REFRESH ?? '').split(',').map(s => s.trim()).filter(Boolean)
+  )
   const publishedRepos = new Set(
-    portfolio.featuredProjects.filter(p => !p._draft).map(p => p.repo)
+    portfolio.featuredProjects.filter(p => !p._draft && !forceRefresh.has(p.repo)).map(p => p.repo)
   )
   const toProcess = tagged.filter(r => !publishedRepos.has(r.name))
 
@@ -190,12 +229,15 @@ async function main() {
     const markdown = await ensureReadme(repo)
     const parsed = parseReadme(markdown, repo)
 
-    // Find if it already exists as a draft (to update in-place) or is brand new
-    const draftIdx = portfolio.featuredProjects.findIndex(p => p.repo === repo.name && p._draft)
-    const order = draftIdx >= 0
-      ? portfolio.featuredProjects[draftIdx].order
-      : maxOrder + (++newCount)
+    // Find any existing entry for this repo — either a draft awaiting promotion, or a
+    // previously-published entry being reprocessed via FORCE_REFRESH.
+    const existingIdx = portfolio.featuredProjects.findIndex(p => p.repo === repo.name)
+    const existingEntry = existingIdx >= 0 ? portfolio.featuredProjects[existingIdx] : null
+    const order = existingEntry ? existingEntry.order : maxOrder + (++newCount)
 
+    // Preserve hand-curated fields (screenshots, collaborator, a manually-set liveLabel)
+    // when refreshing an existing entry — only the README-derived fields get overwritten.
+    // A brand-new entry gets sane defaults for these instead.
     const entry = {
       repo: repo.name,
       featured: true,
@@ -204,14 +246,15 @@ async function main() {
       customDescription: parsed.description,
       highlight: parsed.highlight,
       liveUrl: parsed.liveUrl,
-      liveLabel: parsed.liveUrl ? 'Live Demo' : null,
-      collaborator: null,
+      liveLabel: existingEntry?.liveLabel ?? (parsed.liveUrl ? 'Live Demo' : null),
+      collaborator: existingEntry?.collaborator ?? null,
       tags: parsed.tags,
+      ...(existingEntry?.screenshots ? { screenshots: existingEntry.screenshots } : {}),
     }
 
-    if (draftIdx >= 0) {
-      portfolio.featuredProjects[draftIdx] = entry
-      console.log(`  ✓ promoted draft → live`)
+    if (existingIdx >= 0) {
+      portfolio.featuredProjects[existingIdx] = entry
+      console.log(existingEntry?._draft ? `  ✓ promoted draft → live` : `  ✓ refreshed existing entry`)
     } else {
       portfolio.featuredProjects.push(entry)
       console.log(`  ✓ added new entry`)
