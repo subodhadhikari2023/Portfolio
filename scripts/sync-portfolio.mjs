@@ -91,6 +91,28 @@ function buildReadmeTemplate(repo) {
   ].join('\n')
 }
 
+const SKIP_LANGS = new Set(['HTML', 'CSS', 'SCSS', 'Dockerfile', 'Shell', 'Batchfile', 'Makefile', 'PLpgSQL'])
+
+async function fetchRepoLanguages(repoName) {
+  try {
+    const langs = await gh(`/repos/${USERNAME}/${repoName}/languages`)
+    return Object.keys(langs).filter(l => !SKIP_LANGS.has(l))
+  } catch {
+    return []
+  }
+}
+
+function categorizeTag(tag) {
+  const t = tag.toLowerCase()
+  if (/angular|react|vue|next\.?js|svelte|thymeleaf|html\/css|tailwind|bootstrap/.test(t)) return 'Web Applications'
+  if (/spring|hibernate|\/jpa|rest\s*api|jwt|flask|express|fastapi|httpx|beautifulsoup|scrapy/.test(t)) return 'APIs & Backend'
+  if (/docker|github.?action|ghcr|railway|kubernetes|nginx|vercel|linux|ci\/cd/.test(t)) return 'Deployment & DevOps'
+  if (/mysql|postgresql|postgres|sqlite|mongodb|redis|\bh2\b|flyway|liquibase/.test(t)) return 'Data & Storage'
+  if (/^java$|typescript|javascript|\bpython\b|^sql$|^bash$|kotlin|golang|rust/.test(t)) return 'Languages'
+  if (/\bgit\b|maven|gradle|intellij|vs\s*code|postman|junit|pytest|playwright|rich|pyyaml/.test(t)) return 'Tools'
+  return null
+}
+
 async function fetchScreenshots(repoName) {
   for (const folder of ['docs/screenshots', 'screenshots']) {
     try {
@@ -298,7 +320,28 @@ async function main() {
     return
   }
 
-  // 4. Write back
+  // 4. Rebuild skills from README tags + GitHub Languages API across all projects
+  console.log('\nRebuilding skills...')
+  const allProjects = portfolio.featuredProjects.filter(p => !p._draft)
+  const langResults = await Promise.all(allProjects.map(p => fetchRepoLanguages(p.repo)))
+  const allLanguages = Array.from(new Set(langResults.flat()))
+  const allTags = Array.from(new Set(allProjects.flatMap(p => p.tags ?? [])))
+
+  const skills = {}
+  // Languages from GitHub API — default to 'Languages' if not matched by categorizeTag
+  for (const lang of allLanguages) {
+    const cat = categorizeTag(lang) ?? 'Languages'
+    if (!(skills[cat] ??= []).includes(lang)) skills[cat].push(lang)
+  }
+  // Tags from README Tech Stack sections — uncategorized go to 'Technologies Used'
+  for (const tag of allTags) {
+    const cat = categorizeTag(tag) ?? 'Technologies Used'
+    if (!(skills[cat] ??= []).includes(tag)) skills[cat].push(tag)
+  }
+  portfolio.skills = skills
+  console.log(`  ✓ ${Object.entries(skills).map(([c, s]) => `${c}: ${s.length}`).join(' | ')}`)
+
+  // 5. Write back
   writeFileSync(PORTFOLIO_PATH, JSON.stringify(portfolio, null, 2) + '\n')
   console.log(`\n✓ Processed ${tagged.length} repo(s) — portfolio.json updated`)
 }
