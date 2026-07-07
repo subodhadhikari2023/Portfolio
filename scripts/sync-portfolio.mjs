@@ -64,17 +64,19 @@ function buildReadmeTemplate(repo) {
   return [
     `# ${name}`,
     '',
-    repo.description ?? 'A brief description of this project.',
+    '## Highlight',
+    '',
+    '[TODO: one sentence — a stat, deployment fact, or achievement]',
+    '',
+    '## Tech Stack',
+    '',
+    ...(topics.length > 0 ? topics.map(t => `- ${t}`) : ['- [Add technologies used]']),
     '',
     '## Features',
     '',
     '- Feature 1',
     '- Feature 2',
     '- Feature 3',
-    '',
-    '## Tech Stack',
-    '',
-    ...(topics.length > 0 ? topics.map(t => `- ${t}`) : ['- [Add technologies used]']),
     '',
     '## Getting Started',
     '',
@@ -86,7 +88,7 @@ function buildReadmeTemplate(repo) {
     '',
     '## Live Demo',
     '',
-    repo.homepage ? `[View Live Demo](${repo.homepage})` : '[Add live demo link here]',
+    repo.homepage ? `[Live Demo](${repo.homepage})` : '[Add live demo link here]',
     '',
   ].join('\n')
 }
@@ -186,7 +188,7 @@ function parseReadme(markdown, repo) {
   //   (c) delimiter line    — a single line of items separated by · or , with no
   //                           bullets/table at all, e.g. "Python · httpx · SQLite"
   const techSection = markdown.match(
-    /##\s*(?:tech\s*stack|technologies|built\s*with|tools\s*used)[^\n]*\n([\s\S]*?)(?=\n##|$)/i
+    /##[^\n#]*(?:tech\s*stack|technologies|built\s*with|tools\s*used)[^\n]*\n([\s\S]*?)(?=\n##|$)/i
   )
   let tags = (repo.topics ?? []).filter(t => t !== TOPIC)
   if (techSection) {
