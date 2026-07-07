@@ -92,7 +92,18 @@
         "MySQL",
         "Docker",
         "GitHub Actions",
-        "JUnit 5"
+        "JUnit 5",
+        "H2",
+        "Flyway",
+        "Docker Compose",
+        "GHCR",
+        "Railway",
+        "Java",
+        "JavaScript",
+        "Spring MVC",
+        "Maven",
+        "SQL",
+        "HTML/CSS"
       ]
     },
     {
@@ -114,7 +125,12 @@
         "Rich",
         "pyyaml",
         "python-dotenv",
-        "Docker"
+        "Docker",
+        "Docker Compose",
+        "Linux",
+        "Bash",
+        "Flask",
+        "VS Code"
       ]
     }
   ],
@@ -125,34 +141,47 @@
       "JavaScript",
       "PLSQL",
       "Python",
+      "SQL",
       "Python 3.14",
-      "python-dotenv"
+      "python-dotenv",
+      "Bash"
     ],
     "Web Applications": [
       "Angular 14",
-      "Thymeleaf"
+      "Thymeleaf",
+      "HTML/CSS"
     ],
     "APIs & Backend": [
       "Spring Boot",
       "Spring Security",
       "JWT",
       "Hibernate",
+      "Spring MVC",
       "httpx",
-      "BeautifulSoup4"
+      "BeautifulSoup4",
+      "Flask"
     ],
     "Data & Storage": [
       "MySQL",
+      "H2",
+      "Flyway",
       "SQLite"
     ],
     "Deployment & DevOps": [
       "Docker",
-      "GitHub Actions"
+      "GitHub Actions",
+      "Docker Compose",
+      "GHCR",
+      "Railway",
+      "Linux"
     ],
     "Tools": [
       "JUnit 5",
+      "Maven",
       "Playwright (Firefox)",
       "Rich",
-      "pyyaml"
+      "pyyaml",
+      "VS Code"
     ]
   },
   "experience": [
