@@ -90,20 +90,20 @@
         "Spring Security",
         "Hibernate",
         "MySQL",
-        "Docker",
-        "GitHub Actions",
-        "JUnit 5",
-        "H2",
-        "Flyway",
-        "Docker Compose",
-        "GHCR",
-        "Railway",
+        "Spring MVC",
         "Java",
         "JavaScript",
-        "Spring MVC",
+        "HTML/CSS",
+        "Docker",
+        "Docker Compose",
+        "GitHub Actions",
+        "GHCR",
+        "Railway",
         "Maven",
-        "SQL",
-        "HTML/CSS"
+        "Flyway",
+        "JUnit 5",
+        "H2",
+        "SQL"
       ]
     },
     {
@@ -185,22 +185,22 @@
     ],
     "Data & Storage": [
       "MySQL",
-      "H2",
       "Flyway",
+      "H2",
       "SQLite"
     ],
     "Deployment & DevOps": [
       "Docker",
-      "GitHub Actions",
       "Docker Compose",
+      "GitHub Actions",
       "GHCR",
       "Railway",
       "Linux",
       "Vercel"
     ],
     "Tools": [
-      "JUnit 5",
       "Maven",
+      "JUnit 5",
       "Playwright (Firefox)",
       "Rich",
       "pyyaml",
