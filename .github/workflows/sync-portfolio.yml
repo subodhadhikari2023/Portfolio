@@ -6,11 +6,6 @@ on:
     - cron: '0 0 * * *'
   # Also lets you trigger it manually from the Actions tab
   workflow_dispatch:
-    inputs:
-      force_refresh:
-        description: 'Comma-separated repo names to re-sync even if already published (e.g. CampusConnect,SCOMP)'
-        required: false
-        default: ''
 
 jobs:
   sync:
@@ -31,7 +26,6 @@ jobs:
       - name: Run sync script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          FORCE_REFRESH: ${{ github.event.inputs.force_refresh }}
         run: node scripts/sync-portfolio.mjs
 
       - name: Check if portfolio.json changed

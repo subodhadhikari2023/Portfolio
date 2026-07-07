@@ -227,86 +227,77 @@ async function main() {
 
   // 2. Load current portfolio.json
   const portfolio = JSON.parse(readFileSync(PORTFOLIO_PATH, 'utf-8'))
-  const existing = new Set(portfolio.featuredProjects.map(p => p.repo))
 
-  // 3. Process: new repos + any existing entries still marked _draft + any repo named in
-  // FORCE_REFRESH. Without this, a repo whose README improves AFTER its portfolio entry
-  // was created stays stuck with whatever was parsed the first time — there was previously
-  // no way to tell the script "re-read this one," short of manually deleting its entry.
-  //   FORCE_REFRESH=SCOMP,CampusConnect node scripts/sync-portfolio.mjs
-  const forceRefresh = new Set(
-    (process.env.FORCE_REFRESH ?? '').split(',').map(s => s.trim()).filter(Boolean)
-  )
-  const publishedRepos = new Set(
-    portfolio.featuredProjects.filter(p => !p._draft && !forceRefresh.has(p.repo)).map(p => p.repo)
-  )
-  const toProcess = tagged.filter(r => !publishedRepos.has(r.name))
-
-  if (toProcess.length === 0) {
-    console.log('✓ portfolio.json is already up to date — nothing to add or promote.')
-    return
-  }
-
-  // 4. For each repo to process: fetch/create README, build live entry
+  // 3. Process every tagged repo on every run:
+  //   - New repos get a full entry created from scratch.
+  //   - Existing entries always get description, tags, highlight, and screenshots
+  //     refreshed from the latest README / docs/screenshots/ folder.
+  //   - Hand-curated fields (customTitle, liveUrl, liveLabel, collaborator, order)
+  //     are always preserved from the existing entry.
   const maxOrder = portfolio.featuredProjects.reduce((m, p) => Math.max(m, p.order ?? 0), 0)
   let newCount = 0
+  let changed = false
 
-  for (let i = 0; i < toProcess.length; i++) {
-    const repo = toProcess[i]
+  for (const repo of tagged) {
     console.log(`\nProcessing ${repo.name}...`)
 
     const markdown = await ensureReadme(repo)
     const parsed = parseReadme(markdown, repo)
+    const screenshots = await fetchScreenshots(repo.name)
 
-    // Find any existing entry for this repo — either a draft awaiting promotion, or a
-    // previously-published entry being reprocessed via FORCE_REFRESH.
     const existingIdx = portfolio.featuredProjects.findIndex(p => p.repo === repo.name)
     const existingEntry = existingIdx >= 0 ? portfolio.featuredProjects[existingIdx] : null
-    const order = existingEntry ? existingEntry.order : maxOrder + (++newCount)
 
-    // Screenshots: re-fetch for new entries and FORCE_REFRESH entries; preserve otherwise.
-    // Looks for committed images in docs/screenshots/ or screenshots/ at the repo root.
-    let screenshots = existingEntry?.screenshots
-    if (!existingEntry || forceRefresh.has(repo.name)) {
-      const fetched = await fetchScreenshots(repo.name)
-      if (fetched) screenshots = fetched
-    }
-
-    // Preserve hand-curated fields (collaborator, a manually-set liveLabel)
-    // when refreshing an existing entry — only the README-derived fields get overwritten.
-    // A brand-new entry gets sane defaults for these instead.
-    const entry = {
-      repo: repo.name,
-      featured: true,
-      order,
-      customTitle: parsed.title,
-      customDescription: parsed.description,
-      highlight: parsed.highlight,
-      liveUrl: parsed.liveUrl,
-      liveLabel: existingEntry?.liveLabel ?? (parsed.liveUrl ? 'Live Demo' : null),
-      collaborator: existingEntry?.collaborator ?? null,
-      tags: parsed.tags,
-      ...(screenshots ? { screenshots } : {}),
-    }
-
-    if (existingIdx >= 0) {
-      portfolio.featuredProjects[existingIdx] = entry
-      console.log(existingEntry?._draft ? `  ✓ promoted draft → live` : `  ✓ refreshed existing entry`)
+    if (existingEntry && !existingEntry._draft) {
+      // Existing published entry — refresh only the auto-derived fields.
+      portfolio.featuredProjects[existingIdx] = {
+        ...existingEntry,
+        customDescription: parsed.description,
+        tags: parsed.tags,
+        highlight: parsed.highlight,
+        ...(screenshots ? { screenshots } : {}),
+      }
+      console.log(`  ✓ refreshed description, tags, highlight, screenshots`)
     } else {
-      portfolio.featuredProjects.push(entry)
-      console.log(`  ✓ added new entry`)
+      // New entry or draft being promoted — build a full entry.
+      const order = existingEntry ? existingEntry.order : maxOrder + (++newCount)
+      const entry = {
+        repo: repo.name,
+        featured: true,
+        order,
+        customTitle: parsed.title,
+        customDescription: parsed.description,
+        highlight: parsed.highlight,
+        liveUrl: parsed.liveUrl,
+        liveLabel: parsed.liveUrl ? 'Live Demo' : null,
+        collaborator: null,
+        tags: parsed.tags,
+        ...(screenshots ? { screenshots } : {}),
+      }
+      if (existingIdx >= 0) {
+        portfolio.featuredProjects[existingIdx] = entry
+        console.log(`  ✓ promoted draft → live`)
+      } else {
+        portfolio.featuredProjects.push(entry)
+        console.log(`  ✓ added new entry`)
+      }
     }
 
-    console.log(`  ✓ title:       ${parsed.title}`)
     console.log(`  ✓ description: ${parsed.description.slice(0, 80)}`)
     console.log(`  ✓ tags:        ${parsed.tags.join(', ') || 'none'}`)
-    console.log(`  ✓ liveUrl:     ${parsed.liveUrl ?? 'none'}`)
     console.log(`  ✓ highlight:   ${parsed.highlight}`)
+    console.log(`  ✓ screenshots: ${screenshots ? screenshots.length + ' image(s)' : 'none found'}`)
+    changed = true
   }
 
-  // 5. Write back
+  if (!changed) {
+    console.log('\n✓ No tagged repos found — portfolio.json unchanged.')
+    return
+  }
+
+  // 4. Write back
   writeFileSync(PORTFOLIO_PATH, JSON.stringify(portfolio, null, 2) + '\n')
-  console.log(`\n✓ Processed ${toProcess.length} repo(s) — portfolio.json updated`)
+  console.log(`\n✓ Processed ${tagged.length} repo(s) — portfolio.json updated`)
 }
 
 main().catch(e => {
