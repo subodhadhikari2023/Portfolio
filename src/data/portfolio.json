@@ -171,6 +171,25 @@
         "Docker",
         "Vercel"
       ]
+    },
+    {
+      "repo": "aama-homestay",
+      "featured": true,
+      "order": 4,
+      "customTitle": "Aama Homestay",
+      "customDescription": "Direct booking website for Aama Homestay, Kurseong (Darjeeling Hills) — built with Next.js 14 to eliminate OTA commission fees.",
+      "highlight": "Direct booking site for a mountain homestay in the Darjeeling Hills — WhatsApp enquiries, SEO sitemap, zero OTA fees.",
+      "liveUrl": null,
+      "liveLabel": null,
+      "collaborator": null,
+      "tags": [
+        "Next.js 14",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Docker",
+        "Vercel"
+      ]
     }
   ],
   "skills": {
