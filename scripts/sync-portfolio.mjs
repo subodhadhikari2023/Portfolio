@@ -249,15 +249,16 @@ async function main() {
     const existingEntry = existingIdx >= 0 ? portfolio.featuredProjects[existingIdx] : null
 
     if (existingEntry && !existingEntry._draft) {
-      // Existing published entry — refresh only the auto-derived fields.
+      // Existing published entry — refresh auto-derived fields only.
+      // highlight is hand-curated and cannot be reliably parsed from README prose, so it
+      // is preserved. customTitle, liveUrl, liveLabel, collaborator, order are also preserved.
       portfolio.featuredProjects[existingIdx] = {
         ...existingEntry,
         customDescription: parsed.description,
         tags: parsed.tags,
-        highlight: parsed.highlight,
         ...(screenshots ? { screenshots } : {}),
       }
-      console.log(`  ✓ refreshed description, tags, highlight, screenshots`)
+      console.log(`  ✓ refreshed description, tags, screenshots`)
     } else {
       // New entry or draft being promoted — build a full entry.
       const order = existingEntry ? existingEntry.order : maxOrder + (++newCount)

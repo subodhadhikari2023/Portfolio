@@ -92,7 +92,7 @@
       "order": 3,
       "customTitle": "S.C.O.M.P — Stealth Collection, Outreach & Messaging Pipeline",
       "customDescription": "Python CLI automation framework for personalized cold email outreach — lead discovery, scraping, copywriting, and drip dispatch via Outlook Web, tracked in SQLite with a Rich terminal dashboard.",
-      "highlight": "[TODO: add key stat or achievement]",
+      "highlight": "Dockerized & published to GHCR — zero paid APIs",
       "liveUrl": "https://github.com/subodhadhikari2023/SCOMP/pkgs/container/scomp",
       "liveLabel": "View Container Image",
       "collaborator": null,
