@@ -91,6 +91,22 @@ function buildReadmeTemplate(repo) {
   ].join('\n')
 }
 
+async function fetchScreenshots(repoName) {
+  for (const folder of ['docs/screenshots', 'screenshots']) {
+    try {
+      const files = await gh(`/repos/${USERNAME}/${repoName}/contents/${folder}`)
+      if (!Array.isArray(files)) continue
+      const images = files
+        .filter(f => f.type === 'file' && /\.(png|jpe?g|gif|webp)$/i.test(f.name))
+        .map(f => f.download_url)
+      if (images.length > 0) return images
+    } catch {
+      // folder doesn't exist — try next
+    }
+  }
+  return null
+}
+
 async function ensureReadme(repo) {
   let markdown = await fetchReadme(repo.name)
   if (!markdown) {
@@ -235,7 +251,15 @@ async function main() {
     const existingEntry = existingIdx >= 0 ? portfolio.featuredProjects[existingIdx] : null
     const order = existingEntry ? existingEntry.order : maxOrder + (++newCount)
 
-    // Preserve hand-curated fields (screenshots, collaborator, a manually-set liveLabel)
+    // Screenshots: re-fetch for new entries and FORCE_REFRESH entries; preserve otherwise.
+    // Looks for committed images in docs/screenshots/ or screenshots/ at the repo root.
+    let screenshots = existingEntry?.screenshots
+    if (!existingEntry || forceRefresh.has(repo.name)) {
+      const fetched = await fetchScreenshots(repo.name)
+      if (fetched) screenshots = fetched
+    }
+
+    // Preserve hand-curated fields (collaborator, a manually-set liveLabel)
     // when refreshing an existing entry — only the README-derived fields get overwritten.
     // A brand-new entry gets sane defaults for these instead.
     const entry = {
@@ -249,7 +273,7 @@ async function main() {
       liveLabel: existingEntry?.liveLabel ?? (parsed.liveUrl ? 'Live Demo' : null),
       collaborator: existingEntry?.collaborator ?? null,
       tags: parsed.tags,
-      ...(existingEntry?.screenshots ? { screenshots: existingEntry.screenshots } : {}),
+      ...(screenshots ? { screenshots } : {}),
     }
 
     if (existingIdx >= 0) {
