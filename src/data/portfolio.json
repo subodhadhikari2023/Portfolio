@@ -35,8 +35,8 @@
       "featured": true,
       "order": 1,
       "customTitle": "Internship Management Portal",
-      "customDescription": "Eliminated a 100% paper-based internship process for the Department of IT, Government of Sikkim. Built role-based automation covering applications, document management, progress tracking, and certificate issuance — delivered as a production system still in active use.",
-      "highlight": "Government of Sikkim — Production Delivery",
+      "customDescription": "Production web platform for the Department of IT, Government of Sikkim — role-based internship management with application workflows, document handling, progress tracking, and certificate issuance.",
+      "highlight": "Production system delivered for the Department of IT, Government of Sikkim.",
       "liveUrl": null,
       "liveLabel": "Production system — public demo not available",
       "collaborator": null,
@@ -46,8 +46,28 @@
         "Spring Boot",
         "Spring Security",
         "JWT",
-        "Hibernate",
-        "MySQL"
+        "Hibernate/JPA",
+        "MySQL",
+        "Spring MVC",
+        "REST API",
+        "Docker",
+        "Docker Compose",
+        "Maven",
+        "IntelliJ IDEA",
+        "VS Code",
+        "Git",
+        "HTML/CSS",
+        "Postman"
+      ],
+      "screenshots": [
+        "https://raw.githubusercontent.com/subodhadhikari2023/Internship-Portal/main/docs/screenshots/admin/admin-dashboard.png",
+        "https://raw.githubusercontent.com/subodhadhikari2023/Internship-Portal/main/docs/screenshots/admin/admin-edit-profile.png",
+        "https://raw.githubusercontent.com/subodhadhikari2023/Internship-Portal/main/docs/screenshots/instructor/dashboard-instructor.png",
+        "https://raw.githubusercontent.com/subodhadhikari2023/Internship-Portal/main/docs/screenshots/instructor/view-applications-instructor.png",
+        "https://raw.githubusercontent.com/subodhadhikari2023/Internship-Portal/main/docs/screenshots/instructor/view-student-profile-instructor.png",
+        "https://raw.githubusercontent.com/subodhadhikari2023/Internship-Portal/main/docs/screenshots/student/dashboard-student.png",
+        "https://raw.githubusercontent.com/subodhadhikari2023/Internship-Portal/main/docs/screenshots/student/view-applications-student.png",
+        "https://raw.githubusercontent.com/subodhadhikari2023/Internship-Portal/main/docs/screenshots/student/view-assigned-project-student.png"
       ]
     },
     {
@@ -167,8 +187,8 @@
     ],
     "Web Applications": [
       "Angular 14",
-      "Thymeleaf",
       "HTML/CSS",
+      "Thymeleaf",
       "Next.js 14",
       "React",
       "Tailwind CSS"
@@ -177,8 +197,10 @@
       "Spring Boot",
       "Spring Security",
       "JWT",
-      "Hibernate",
+      "Hibernate/JPA",
       "Spring MVC",
+      "REST API",
+      "Hibernate",
       "httpx",
       "BeautifulSoup4",
       "Flask"
@@ -200,11 +222,14 @@
     ],
     "Tools": [
       "Maven",
+      "IntelliJ IDEA",
+      "VS Code",
+      "Git",
+      "Postman",
       "JUnit 5",
       "Playwright (Firefox)",
       "Rich",
-      "pyyaml",
-      "VS Code"
+      "pyyaml"
     ]
   },
   "experience": [
