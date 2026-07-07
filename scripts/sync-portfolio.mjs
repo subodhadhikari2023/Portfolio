@@ -174,11 +174,9 @@ function parseReadme(markdown, repo) {
   // parsing README prose, which varies widely in structure across repos).
   const description = repo.description ?? `[TODO: describe ${repo.name}]`
 
-  // Live URL: look for demo/live links in the markdown, fall back to repo homepage
-  const liveMatch = markdown.match(
-    /\[(?:live\s*demo|demo|view\s*live|deployed|live\s*site)[^\]]*\]\((https?:\/\/[^)]+)\)/i
-  )
-  const liveUrl = liveMatch ? liveMatch[1] : (repo.homepage || null)
+  // Live URL: sourced exclusively from the repo's Website field (repo.homepage).
+  // Empty Website field → null.
+  const liveUrl = repo.homepage || null
 
   // Tags: parse "Tech Stack / Technologies / Built With" section, supplement with repo topics.
   // READMEs use three different shapes for this section in practice, so we detect and
@@ -277,16 +275,18 @@ async function main() {
 
     if (existingEntry && !existingEntry._draft) {
       // Existing published entry — refresh auto-derived fields only.
-      // highlight is hand-curated and cannot be reliably parsed from README prose, so it
-      // is preserved. customTitle, liveUrl, liveLabel, collaborator, order are also preserved.
+      // liveUrl is always refreshed from the repo Website field; empty → null.
+      // highlight is hand-curated and preserved. customTitle, liveLabel, collaborator,
+      // order are always preserved.
       portfolio.featuredProjects[existingIdx] = {
         ...existingEntry,
         customDescription: parsed.description,
         highlight: parsed.highlight,
         tags: parsed.tags,
+        liveUrl: parsed.liveUrl,
         ...(screenshots ? { screenshots } : {}),
       }
-      console.log(`  ✓ refreshed description, highlight, tags, screenshots`)
+      console.log(`  ✓ refreshed description, highlight, tags, screenshots, liveUrl → ${parsed.liveUrl ?? 'null'}`)
     } else {
       // New entry or draft being promoted — build a full entry.
       const order = existingEntry ? existingEntry.order : maxOrder + (++newCount)
