@@ -16,12 +16,19 @@ Good examples:
 
 ## Tech Stack
 
+<!-- Badges — for visual display -->
+![Technology](https://img.shields.io/badge/Technology-Color?style=for-the-badge&logo=logo-slug&logoColor=white)
+![Technology](https://img.shields.io/badge/Technology-Color?style=for-the-badge&logo=logo-slug&logoColor=white)
+
+<!-- Bullet list — read by the portfolio sync -->
 - Technology 1
 - Technology 2
 - Technology 3
 
 Use plain names as you want them shown on portfolio tags — e.g. `Spring Boot`, `Angular 14`,
-`Docker`. One item per bullet. Frameworks, libraries, databases, and DevOps tools all go here.
+`Docker`. One item per bullet. The sync reads the bullets; the badges are for GitHub display only.
+
+Find badge snippets at [shields.io](https://shields.io) or [github.com/Ileriayo/markdown-badges](https://github.com/Ileriayo/markdown-badges).
 
 ## Features
 

@@ -70,6 +70,8 @@ function buildReadmeTemplate(repo) {
     '',
     '## Tech Stack',
     '',
+    '<!-- Add shields.io badges here -->',
+    '',
     ...(topics.length > 0 ? topics.map(t => `- ${t}`) : ['- [Add technologies used]']),
     '',
     '## Features',
