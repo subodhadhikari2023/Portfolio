@@ -56,9 +56,11 @@ export default function Projects({ projects }: ProjectsProps) {
                 </div>
 
                 {/* Highlight badge */}
-                <span className="inline-flex self-start mb-4 text-xs px-3 py-1 rounded-full bg-accent-purple/10 text-accent-cyan border border-accent-purple/20 font-medium">
-                  {project.highlight}
-                </span>
+                {project.highlight && (
+                  <span className="inline-flex self-start mb-4 text-xs px-3 py-1 rounded-full bg-accent-purple/10 text-accent-cyan border border-accent-purple/20 font-medium">
+                    {project.highlight}
+                  </span>
+                )}
 
                 {/* Description */}
                 <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-5 flex-1">

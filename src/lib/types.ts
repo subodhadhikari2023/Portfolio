@@ -21,7 +21,7 @@ export interface FeaturedProject {
   order: number
   customTitle: string
   customDescription: string
-  highlight: string
+  highlight: string | null
   liveUrl: string | null
   liveLabel: string | null
   collaborator: string | null

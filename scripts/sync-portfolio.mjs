@@ -200,21 +200,22 @@ function parseReadme(markdown, repo) {
     if (parsed.length > 0) tags = [...new Set([...tags, ...parsed])]
   }
 
-  // Highlight: prefer a test/user count stat, then a genuine deployment-status sentence.
-  // The old regex matched the bare word "live" anywhere (e.g. "queries live in
-  // config/queries.yaml" — meaning "reside," not "deployed"), and could match inside
-  // inline code spans. We now require specific deployment phrasing and strip inline
-  // code (`...`) before searching so config paths can't be mistaken for a claim.
+  // Highlight: read from a dedicated "## Highlight" section first (preferred — unambiguous),
+  // then fall back to scanning for a stat count or deployment sentence in the full text.
+  const highlightSection = markdown.match(/##\s*Highlight[^\n]*\n([\s\S]*?)(?=\n##|$)/i)
+  const highlightLine = highlightSection
+    ? highlightSection[1].split('\n').map(l => l.trim()).find(l => l.length > 0)
+    : null
+
   const searchableText = markdown.replace(/`[^`]*`/g, '')
   const statMatch = searchableText.match(/(\d+\+?\s*(?:tests?|automated\s*tests?|endpoints?|features?|users?|requests?\/s))/i)
   const prodMatch = searchableText.match(
     /(?:is\s+live|live\s+(?:at|on|demo|instance)|currently\s+deployed|deployed\s+(?:to|on|via)|in\s+production|production[- ]ready|production\s+system)[^\n.!?]*[.!?]/i
   )
-  const highlight = statMatch
-    ? statMatch[0].trim()
-    : prodMatch
-    ? prodMatch[0].trim()
-    : '[TODO: add key stat or achievement]'
+  const highlight = highlightLine
+    ?? (statMatch ? statMatch[0].trim() : null)
+    ?? (prodMatch ? prodMatch[0].trim() : null)
+    ?? null
 
   return { title, description, liveUrl, tags, highlight }
 }
@@ -255,10 +256,11 @@ async function main() {
       portfolio.featuredProjects[existingIdx] = {
         ...existingEntry,
         customDescription: parsed.description,
+        highlight: parsed.highlight,
         tags: parsed.tags,
         ...(screenshots ? { screenshots } : {}),
       }
-      console.log(`  ✓ refreshed description, tags, screenshots`)
+      console.log(`  ✓ refreshed description, highlight, tags, screenshots`)
     } else {
       // New entry or draft being promoted — build a full entry.
       const order = existingEntry ? existingEntry.order : maxOrder + (++newCount)
