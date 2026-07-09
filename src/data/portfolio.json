@@ -171,6 +171,28 @@
         "Docker",
         "Vercel"
       ]
+    },
+    {
+      "repo": "WATCH",
+      "featured": true,
+      "order": 5,
+      "customTitle": "W.A.T.C.H",
+      "customDescription": "Real-time Linux server monitoring — FastAPI + asyncssh backend streaming live health metrics to a React dashboard over WebSocket.",
+      "highlight": "Async SSH polling streams live CPU/memory/disk metrics from multiple Linux servers over a single WebSocket connection.",
+      "liveUrl": null,
+      "liveLabel": null,
+      "collaborator": null,
+      "tags": [
+        "FastAPI",
+        "Python",
+        "asyncssh",
+        "WebSocket",
+        "React",
+        "JWT",
+        "Docker",
+        "Docker Compose",
+        "GitHub Actions"
+      ]
     }
   ],
   "skills": {
@@ -203,7 +225,8 @@
       "Hibernate",
       "httpx",
       "BeautifulSoup4",
-      "Flask"
+      "Flask",
+      "FastAPI"
     ],
     "Data & Storage": [
       "MySQL",
@@ -230,6 +253,10 @@
       "Playwright (Firefox)",
       "Rich",
       "pyyaml"
+    ],
+    "Technologies Used": [
+      "asyncssh",
+      "WebSocket"
     ]
   },
   "experience": [
