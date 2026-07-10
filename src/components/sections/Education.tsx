@@ -9,7 +9,7 @@ interface EducationProps {
 
 export default function Education({ education }: EducationProps) {
   return (
-    <section id="education" className="py-24 bg-[var(--bg-secondary)]">
+    <section id="education" className="relative section-seam py-24 bg-[var(--bg-secondary)]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <AnimatedSection>
           <SectionHeader title="Education" />

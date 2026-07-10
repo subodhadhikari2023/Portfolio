@@ -6,7 +6,7 @@ interface FooterProps {
 
 export default function Footer({ personal }: FooterProps) {
   return (
-    <footer className="border-t border-[var(--glass-border)] py-8">
+    <footer className="relative section-seam border-t border-[var(--glass-border)] py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-sm text-[var(--text-secondary)]">
           © {new Date().getFullYear()} {personal.name} · Built with Next.js & deployed on Vercel

@@ -11,7 +11,7 @@ export default function GlassCard({ children, className = '', hover = true }: Gl
     <div
       className={`glass rounded-2xl ${
         hover
-          ? 'transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-lg hover:shadow-accent-cyan/5'
+          ? 'hover-glow transition-all duration-300 hover:-translate-y-1'
           : ''
       } ${className}`}
     >

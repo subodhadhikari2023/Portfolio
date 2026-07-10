@@ -8,7 +8,7 @@ interface ExperienceProps {
 
 export default function Experience({ experience }: ExperienceProps) {
   return (
-    <section id="experience" className="py-24 bg-[var(--bg-primary)]">
+    <section id="experience" className="relative section-seam py-24 bg-[var(--bg-primary)]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <AnimatedSection>
           <SectionHeader title="Experience" />
@@ -28,7 +28,7 @@ export default function Experience({ experience }: ExperienceProps) {
                     <div
                       className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border-2 ${
                         item.highlight
-                          ? 'gradient-bg text-white border-transparent shadow-lg shadow-[rgba(var(--accent-cyan-rgb),0.3)]'
+                          ? 'gradient-bg text-white border-transparent pulse-glow'
                           : 'glass border-[var(--glass-border)] text-[var(--text-secondary)]'
                       }`}
                     >
@@ -38,7 +38,7 @@ export default function Experience({ experience }: ExperienceProps) {
 
                   {/* Card */}
                   {item.highlight ? (
-                    <div className="flex-1 relative p-5 rounded-2xl border border-accent-cyan/25 bg-gradient-to-br from-accent-cyan/5 to-accent-purple/5 backdrop-blur-sm shadow-lg shadow-[rgba(var(--accent-cyan-rgb),0.06)]">
+                    <div className="flex-1 relative p-5 rounded-2xl border border-accent-cyan/25 bg-gradient-to-br from-accent-cyan/5 to-accent-purple/5 backdrop-blur-sm glow-cyan">
                       <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                         <div>
                           <h3 className="text-base font-bold text-[var(--text-primary)]">{item.role}</h3>
@@ -51,15 +51,20 @@ export default function Experience({ experience }: ExperienceProps) {
                       <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{item.description}</p>
                     </div>
                   ) : (
-                    <div className="flex-1 glass rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3">
-                      <div>
-                        <span className="text-sm font-semibold text-[var(--text-primary)]">{item.role}</span>
-                        <span className="text-[var(--text-secondary)] mx-2">·</span>
-                        <span className="text-sm text-[var(--text-secondary)]">{item.org}</span>
+                    <div className="flex-1 glass hover-glow rounded-2xl p-4 transition-all duration-300">
+                      <div className="flex flex-wrap items-start justify-between gap-2">
+                        <div>
+                          <span className="text-sm font-semibold text-[var(--text-primary)]">{item.role}</span>
+                          <span className="text-[var(--text-secondary)] mx-2">·</span>
+                          <span className="text-sm text-[var(--text-secondary)]">{item.org}</span>
+                        </div>
+                        <span className="text-xs text-[var(--text-secondary)] glass px-3 py-1 rounded-full whitespace-nowrap">
+                          {item.period}
+                        </span>
                       </div>
-                      <span className="text-xs text-[var(--text-secondary)] glass px-3 py-1 rounded-full whitespace-nowrap">
-                        {item.period}
-                      </span>
+                      {item.description && (
+                        <p className="text-sm text-[var(--text-secondary)] leading-relaxed mt-2">{item.description}</p>
+                      )}
                     </div>
                   )}
                 </div>

@@ -2,7 +2,7 @@
   "personal": {
     "name": "Subodh Adhikari",
     "title": "Full-Stack Developer & DevOps Engineer — Available for Freelance",
-    "tagline": "I take your idea from wireframe to live URL — secured APIs, role-based web apps, and Docker deployments delivered end-to-end. One developer, one point of contact, no middlemen.",
+    "tagline": "I take your idea from wireframe to live URL, secured APIs, role-based web apps, and Docker deployments delivered end-to-end. One developer, one point of contact, no middlemen.",
     "location": "Kalimpong, West Bengal, India",
     "email": "subodhadhikari2023@outlook.com",
     "github": "https://github.com/subodhadhikari2023",
@@ -15,10 +15,6 @@
     {
       "label": "Projects Shipped",
       "value": "2+"
-    },
-    {
-      "label": "Automated Tests",
-      "value": "194"
     },
     {
       "label": "Government Client",
@@ -76,7 +72,7 @@
       "order": 2,
       "customTitle": "CampusConnect",
       "customDescription": "CampusConnect is a Spring Boot web application providing a unified academic workspace for four roles — Admin, HOD, Teacher, and Student. Each role has its own dashboard and a permission-scoped set of actions, enforced at every request by Spring Security.",
-      "highlight": "194 automated tests — deployed to Oracle Cloud.",
+      "highlight": "Deployed to Oracle Cloud.",
       "liveUrl": "http://152.67.178.227:8080/",
       "liveLabel": null,
       "collaborator": "Built with Manav Agarwal",
@@ -261,24 +257,24 @@
   },
   "experience": [
     {
-      "role": "Intern",
-      "org": "Department of IT, Government of Sikkim",
-      "period": "Jan 2025 – May 2025",
-      "description": "Developed the Internship Management Portal — replacing manual paper workflows with a fully automated, role-based system handling applications, document management, progress tracking, and certificate issuance.",
+      "role": "Lecturer",
+      "org": "ICFAI University, Sikkim",
+      "period": "2024 – Present",
+      "description": "Teaching undergraduate courses in programming, data structures, and web development, while mentoring students on projects and research initiatives.",
       "highlight": true
     },
     {
       "role": "TGT Computer",
       "org": "APS Kalimpong",
       "period": "May 2025 – Oct 2025",
-      "description": "Taught computer science fundamentals and programming.",
+      "description": "Taught computer science fundamentals and programming, led space club to guide students about space, and celestial bodies, along with handling IOT club and guided students to build hands projects using Arduino and Raspberry Pi.",
       "highlight": false
     },
     {
-      "role": "Lecturer",
-      "org": "ICFAI University, Sikkim",
-      "period": "2024 – Present",
-      "description": "Teaching UI/UX, Cybersecurity, and OOPs.",
+      "role": "Intern",
+      "org": "Department of IT, Government of Sikkim",
+      "period": "Jan 2025 – May 2025",
+      "description": "Developed the Internship Management Portal — replacing manual paper workflows with a fully automated, role-based system handling applications, document management, progress tracking, and certificate issuance.",
       "highlight": false
     }
   ],
@@ -297,6 +293,12 @@
     }
   ],
   "certifications": [
+    {
+      "name": "Full Stack: Angular and Java Spring Boot E-Commerce Website",
+      "issuer": "Udemy",
+      "date": "Jul 2026",
+      "screenshot": "/assets/certifications/angular-spring-boot.png"
+    },
     {
       "name": "Spring Boot 3, Spring 6 & Hibernate for Beginners",
       "issuer": "Udemy",

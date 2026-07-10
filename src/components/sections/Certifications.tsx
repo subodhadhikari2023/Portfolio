@@ -21,7 +21,7 @@ const ExternalLinkIcon = () => (
 
 export default function Certifications({ certifications }: CertificationsProps) {
   return (
-    <section id="certifications" className="py-24 bg-[var(--bg-primary)]">
+    <section id="certifications" className="relative section-seam py-24 bg-[var(--bg-primary)]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <AnimatedSection>
           <SectionHeader
@@ -37,7 +37,7 @@ export default function Certifications({ certifications }: CertificationsProps) 
                 href={cert.screenshot ?? '#'}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group glass rounded-xl overflow-hidden flex flex-col hover:-translate-y-1 hover:border-[rgba(var(--accent-cyan-rgb),0.3)] transition-all duration-300"
+                className="group glass hover-glow rounded-xl overflow-hidden flex flex-col hover:-translate-y-1 transition-all duration-300"
               >
                 {/* Certificate thumbnail */}
                 {cert.screenshot ? (

@@ -10,6 +10,9 @@ const NAV_LINKS = [
   { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
   { label: 'Experience', href: '#experience' },
+  { label: 'Education', href: '#education' },
+  { label: 'Certifications', href: '#certifications' },
+  { label: 'Process', href: '#process' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -33,7 +36,7 @@ export default function Navbar({ personal }: NavbarProps) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'backdrop-blur-xl bg-[var(--bg-primary)]/80 border-b border-[var(--glass-border)] shadow-sm'
+          ? 'backdrop-blur-xl bg-[var(--bg-primary)]/70 border-b border-[var(--glass-border)] shadow-[0_1px_24px_rgba(var(--accent-cyan-rgb),0.08)]'
           : 'bg-transparent'
       }`}
     >
@@ -49,39 +52,40 @@ export default function Navbar({ personal }: NavbarProps) {
         </Link>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex items-center gap-1">
+        <ul className="hidden lg:flex items-center gap-0.5">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="px-3 py-1.5 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] rounded-lg hover:bg-white/5 transition-all duration-200"
+                className="group relative px-2.5 py-1.5 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] rounded-lg transition-all duration-200 whitespace-nowrap"
               >
                 {link.label}
+                <span className="absolute left-2.5 right-2.5 -bottom-0.5 h-px scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-300 bg-gradient-to-r from-accent-cyan to-accent-purple" />
               </a>
             </li>
           ))}
         </ul>
 
         {/* Desktop CTA */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
           <ThemeToggle />
           <a
             href={personal.resumeUrl}
             download
-            className="text-sm px-4 py-1.5 glass rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all duration-200"
+            className="text-sm px-4 py-1.5 glass rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover-glow transition-all duration-200"
           >
             Resume
           </a>
           <a
             href="#contact"
-            className="text-sm px-4 py-1.5 gradient-bg rounded-lg text-white font-medium hover:opacity-90 transition-opacity"
+            className="text-sm px-4 py-1.5 gradient-bg rounded-lg text-white font-medium hover:opacity-90 transition-all duration-200 shadow-[0_0_18px_rgba(var(--accent-purple-rgb),var(--glow-strength))] hover:shadow-[0_0_26px_rgba(var(--accent-cyan-rgb),calc(var(--glow-strength)+0.15))]"
           >
             Hire Me
           </a>
         </div>
 
         {/* Mobile controls */}
-        <div className="flex md:hidden items-center gap-2">
+        <div className="flex lg:hidden items-center gap-2">
           <ThemeToggle />
           <button
             onClick={() => setMenuOpen((o) => !o)}
@@ -98,8 +102,8 @@ export default function Navbar({ personal }: NavbarProps) {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
-          menuOpen ? 'max-h-96 border-b border-[var(--glass-border)]' : 'max-h-0'
+        className={`lg:hidden overflow-hidden transition-all duration-300 ${
+          menuOpen ? 'max-h-[32rem] border-b border-[var(--glass-border)] shadow-[0_1px_24px_rgba(var(--accent-cyan-rgb),0.08)]' : 'max-h-0'
         } backdrop-blur-xl bg-[var(--bg-primary)]/95`}
       >
         <ul className="px-4 py-4 flex flex-col gap-1">
