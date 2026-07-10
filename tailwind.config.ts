@@ -13,6 +13,7 @@ const config: Config = {
         accent: {
           cyan: 'rgb(var(--accent-cyan-rgb) / <alpha-value>)',
           purple: 'rgb(var(--accent-purple-rgb) / <alpha-value>)',
+          pink: 'rgb(var(--accent-pink-rgb) / <alpha-value>)',
         },
         success: 'var(--color-success)',
         udemy: 'var(--color-udemy)',

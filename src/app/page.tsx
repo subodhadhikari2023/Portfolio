@@ -7,6 +7,7 @@ import Skills from '@/components/sections/Skills'
 import Experience from '@/components/sections/Experience'
 import Education from '@/components/sections/Education'
 import Certifications from '@/components/sections/Certifications'
+import Process from '@/components/sections/Process'
 import Contact from '@/components/sections/Contact'
 import { getPortfolioData } from '@/lib/data'
 
@@ -26,6 +27,7 @@ export default async function Home() {
         <Experience experience={data.experience} />
         <Education education={data.education} />
         <Certifications certifications={data.certifications} />
+        <Process />
         <Contact personal={data.personal} />
       </main>
       <Footer personal={data.personal} />

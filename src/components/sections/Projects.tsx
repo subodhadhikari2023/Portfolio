@@ -23,7 +23,7 @@ const GitHubIcon = () => (
 
 export default function Projects({ projects }: ProjectsProps) {
   return (
-    <section id="projects" className="py-24 bg-[var(--bg-primary)]">
+    <section id="projects" className="relative section-seam py-24 bg-[var(--bg-primary)]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <AnimatedSection>
           <SectionHeader
@@ -55,17 +55,28 @@ export default function Projects({ projects }: ProjectsProps) {
                   </div>
                 </div>
 
-                {/* Highlight badge */}
-                {project.highlight && (
-                  <span className="inline-flex self-start mb-4 text-xs px-3 py-1 rounded-full bg-accent-purple/10 text-accent-cyan border border-accent-purple/20 font-medium">
-                    {project.highlight}
+                {/* What I built */}
+                <div className="mb-4 flex-1">
+                  <span className="text-[10px] font-semibold uppercase tracking-wider text-[var(--text-secondary)] opacity-70">
+                    What I built
                   </span>
-                )}
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed mt-1.5">
+                    {project.customDescription}
+                  </p>
+                </div>
 
-                {/* Description */}
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-5 flex-1">
-                  {project.customDescription}
-                </p>
+                {/* Result */}
+                {project.highlight && (
+                  <div className="mb-4 flex items-start gap-2.5 rounded-xl border border-accent-purple/20 bg-accent-purple/5 px-3.5 py-3">
+                    <span className="text-accent-cyan mt-0.5 shrink-0">✓</span>
+                    <div>
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-accent-cyan block mb-0.5">
+                        Result
+                      </span>
+                      <span className="text-xs text-[var(--text-secondary)] leading-relaxed">{project.highlight}</span>
+                    </div>
+                  </div>
+                )}
 
                 {/* Collaborator */}
                 {project.collaborator && (
@@ -73,15 +84,20 @@ export default function Projects({ projects }: ProjectsProps) {
                 )}
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-1.5 mb-5">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs px-2.5 py-1 glass rounded-full text-[var(--text-secondary)]"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <div className="mb-5">
+                  <span className="text-[10px] font-semibold uppercase tracking-wider text-[var(--text-secondary)] opacity-70">
+                    Tech stack
+                  </span>
+                  <div className="flex flex-wrap gap-1.5 mt-1.5">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs px-2.5 py-1 glass rounded-full text-[var(--text-secondary)]"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Footer links */}

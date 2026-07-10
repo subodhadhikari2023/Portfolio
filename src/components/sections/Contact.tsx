@@ -1,6 +1,10 @@
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import SectionHeader from '@/components/ui/SectionHeader'
+import LinkedInBadge from '@/components/ui/LinkedInBadge'
+import GitHubBadge from '@/components/ui/GitHubBadge'
 import type { Personal } from '@/lib/types'
+
+const UPWORK_URL = 'https://www.upwork.com/freelancers/~01694216c5e6bd0285'
 
 interface ContactProps {
   personal: Personal
@@ -25,33 +29,35 @@ const LinkedInIcon = () => (
   </svg>
 )
 
+const UpworkIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M7 10v3.5a3.5 3.5 0 0 0 7 0V13" />
+    <path d="M7 7v4" />
+    <circle cx="17" cy="13.5" r="3.2" />
+    <path d="M14.3 12c.3-2.5 1-4.3 2.2-5.8" />
+  </svg>
+)
+
 export default function Contact({ personal }: ContactProps) {
-  const contacts = [
+  const githubUsername = personal.github.replace(/\/$/, '').split('/').pop() || 'subodhadhikari2023'
+
+  const simpleContacts = [
     {
       label: 'Email',
-      value: personal.email,
       href: `mailto:${personal.email}`,
       icon: <MailIcon />,
       description: 'Start a project conversation',
     },
     {
-      label: 'GitHub',
-      value: 'subodhadhikari2023',
-      href: personal.github,
-      icon: <GitHubIcon />,
-      description: 'See my code',
-    },
-    {
-      label: 'LinkedIn',
-      value: 'Subodh Adhikari',
-      href: personal.linkedin,
-      icon: <LinkedInIcon />,
-      description: 'Connect professionally',
+      label: 'Upwork',
+      href: UPWORK_URL,
+      icon: <UpworkIcon />,
+      description: 'Hire me on Upwork',
     },
   ]
 
   return (
-    <section id="contact" className="py-24 bg-[var(--bg-secondary)]">
+    <section id="contact" className="relative section-seam py-24 bg-[var(--bg-secondary)]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
         <AnimatedSection>
           <SectionHeader
@@ -63,14 +69,46 @@ export default function Contact({ personal }: ContactProps) {
           </p>
         </AnimatedSection>
 
-        <div className="grid sm:grid-cols-3 gap-4 mt-10 max-w-3xl mx-auto">
-          {contacts.map((contact, i) => (
-            <AnimatedSection key={contact.label} delay={0.1 + i * 0.1}>
+        {/* LinkedIn — real profile badge widget, its own link redirects to the profile */}
+        <AnimatedSection delay={0.15}>
+          <div className="glass-strong hover-glow rounded-2xl p-6 mt-10 max-w-3xl mx-auto flex flex-col items-center gap-3 transition-all duration-300">
+            <span className="text-[var(--text-secondary)]">
+              <LinkedInIcon />
+            </span>
+            <div className="text-sm font-semibold text-[var(--text-primary)]">LinkedIn</div>
+            <LinkedInBadge />
+          </div>
+        </AnimatedSection>
+
+        <div className="grid sm:grid-cols-3 gap-4 mt-6 max-w-3xl mx-auto">
+          {/* GitHub — icon/label link plus the official follow-button widget, kept as sibling links */}
+          <AnimatedSection delay={0.25}>
+            <div className="glass hover-glow rounded-2xl p-6 flex flex-col items-center gap-3 transition-all duration-300 h-full">
+              <a
+                href={personal.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center gap-3"
+              >
+                <span className="text-[var(--text-secondary)] group-hover:text-accent-cyan transition-colors duration-200">
+                  <GitHubIcon />
+                </span>
+                <div>
+                  <div className="text-sm font-semibold text-[var(--text-primary)]">GitHub</div>
+                  <div className="text-xs text-[var(--text-secondary)] mt-0.5">See my code</div>
+                </div>
+              </a>
+              <GitHubBadge username={githubUsername} />
+            </div>
+          </AnimatedSection>
+
+          {simpleContacts.map((contact, i) => (
+            <AnimatedSection key={contact.label} delay={0.35 + i * 0.1}>
               <a
                 href={contact.href}
                 target={contact.href.startsWith('mailto') ? undefined : '_blank'}
                 rel={contact.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-                className="group glass rounded-2xl p-6 flex flex-col items-center gap-3 hover:-translate-y-1 hover:border-accent-cyan/30 transition-all duration-300 block"
+                className="group glass hover-glow rounded-2xl p-6 flex flex-col items-center gap-3 hover:-translate-y-1 transition-all duration-300 block h-full"
               >
                 <span className="text-[var(--text-secondary)] group-hover:text-accent-cyan transition-colors duration-200">
                   {contact.icon}

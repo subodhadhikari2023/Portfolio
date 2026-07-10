@@ -61,7 +61,7 @@ export default function Hero({ personal }: HeroProps) {
             )}
 
             <motion.h1 {...fadeUp(0.1)} className="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight">
-              <span className="gradient-text">{personal.name.split(' ')[0]}</span>
+              <span className="gradient-text drop-shadow-[0_0_28px_rgba(var(--accent-cyan-rgb),var(--glow-strength))]">{personal.name.split(' ')[0]}</span>
               <br />
               <span className="text-[var(--text-primary)]">{personal.name.split(' ')[1]}</span>
             </motion.h1>
@@ -105,20 +105,20 @@ export default function Hero({ personal }: HeroProps) {
             <motion.div {...fadeUp(0.48)} className="flex flex-wrap gap-3 pt-1">
               <a
                 href="#contact"
-                className="px-6 py-3 gradient-bg rounded-xl text-white font-semibold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-[rgba(var(--accent-purple-rgb),0.25)]"
+                className="px-6 py-3 gradient-bg rounded-xl text-white font-semibold text-sm hover:opacity-95 transition-all duration-200 shadow-[0_0_22px_rgba(var(--accent-purple-rgb),var(--glow-strength))] hover:shadow-[0_0_32px_rgba(var(--accent-cyan-rgb),calc(var(--glow-strength)+0.15))] hover:-translate-y-0.5"
               >
                 Start a Project
               </a>
               <a
                 href="#projects"
-                className="px-6 py-3 glass rounded-xl text-[var(--text-primary)] font-semibold text-sm hover:bg-white/10 transition-all duration-200"
+                className="px-6 py-3 glass hover-glow rounded-xl text-[var(--text-primary)] font-semibold text-sm hover:-translate-y-0.5 transition-all duration-200"
               >
                 View Projects
               </a>
               <a
                 href={personal.resumeUrl}
                 download
-                className="px-6 py-3 glass rounded-xl text-[var(--text-secondary)] font-medium text-sm hover:text-[var(--text-primary)] transition-all duration-200"
+                className="px-6 py-3 glass hover-glow rounded-xl text-[var(--text-secondary)] font-medium text-sm hover:text-[var(--text-primary)] hover:-translate-y-0.5 transition-all duration-200"
               >
                 Download CV
               </a>
@@ -157,12 +157,12 @@ export default function Hero({ personal }: HeroProps) {
             className="flex justify-center md:justify-end"
           >
             <div className="relative">
-              {/* Glow rings */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent-cyan/20 to-accent-purple/20 blur-3xl scale-110" />
-              <div className="absolute -inset-3 rounded-3xl border border-accent-cyan/20" />
-              <div className="absolute -inset-6 rounded-3xl border border-accent-purple/10" />
+              {/* Ambient glow */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent-cyan/25 via-accent-purple/20 to-accent-pink/20 blur-3xl scale-110" />
+              {/* Single neon ring */}
+              <div className="absolute -inset-4 rounded-[2rem] border border-accent-cyan/20 [background:linear-gradient(135deg,rgba(var(--accent-cyan-rgb),0.08),transparent_60%)]" />
               {/* Image */}
-              <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-2xl overflow-hidden glass border border-[var(--glass-border)] shadow-2xl shadow-[rgba(var(--accent-purple-rgb),0.15)]">
+              <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-2xl overflow-hidden glass-strong hover-glow shadow-2xl shadow-[rgba(var(--accent-purple-rgb),0.2)]">
                 <Image
                   src="/assets/hero-image.jpeg"
                   alt="Subodh Adhikari — Full-Stack Developer & DevOps Engineer"
@@ -171,6 +171,7 @@ export default function Hero({ personal }: HeroProps) {
                   priority
                   sizes="(max-width: 640px) 288px, 320px"
                 />
+                <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl pointer-events-none" />
               </div>
             </div>
           </motion.div>
